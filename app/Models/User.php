@@ -50,7 +50,7 @@ class User extends Authenticatable
         parent::boot();
 
         self::creating(function ($user) {
-            $user->password= str_random(10);
+            $user->password= Str::random(10);
         });
     }
 }
