@@ -21,14 +21,17 @@ class UsersController extends Controller
             $user->firstname = $request->firstname;
             $user->lastname = $request->lastname;
             $user->email = $request->email;
-            $user->passord = $request->password;
             $user->role = $request->role;
 
             $user->save();
 
             return array(
                         'status'=>'success',
-                        'message'=>'User account created succesfully!'
+                        'message'=>'User account created succesfully!',
+                        'data'=>{
+                            'username':$user->email,
+                            'password'=>$user->password
+                        }
                     );
         }catch(Exception $err){
             return array('status'=>'error','message'=>'Failed to create new user account!','error'=>$err);
