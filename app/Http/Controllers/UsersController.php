@@ -14,6 +14,44 @@ class UsersController extends Controller
         return view('pages.users.create');
     }
 
+    public function store(Request $request){
+        
+        try{
+            $user = new User();
+            $user->firstname = $request->firstname;
+            $user->lastname = $request->lastname;
+            $user->email = $request->email;
+            $user->passord = $request->password;
+            $user->role = $request->role;
+
+            $user->save();
+
+            return array(
+                        'status'=>'success',
+                        'message'=>'User account created succesfully!'
+                    );
+        }catch(Exception $err){
+            return array('status'=>'error','message'=>'Failed to create new user account!','error'=>$err);
+        }
+
+
+    }
+
+    //Get all users
+    public function all(){
+        $users = User::all();
+        return array(
+            'status'=>'success',
+            'message'=>count($users).' Users found!',
+            'data'=>$users
+        );
+    }
+
+    //Find single user by ID
+    public function find(Request $request){
+
+    }
+
     //Create user login pages
     public function login()
     {
