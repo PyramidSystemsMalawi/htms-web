@@ -16,14 +16,17 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('v1')->group(function(){
     Route::post('user/auth', 'UsersController@authenticate');
-});
-
-Route::middleware('auth:sanctum')->prefix('v1')->group(function () {
     Route::post('/user', 'UsersController@store');
     Route::get('/user', 'UsersController@all');
     Route::get('/user/{user_id}', 'UsersController@find');
-
 });
+
+// Route::middleware('auth:sanctum')->prefix('v1')->group(function () {
+//     Route::post('/user', 'UsersController@store');
+//     Route::get('/user', 'UsersController@all');
+//     Route::get('/user/{user_id}', 'UsersController@find');
+
+// });
 
 
 
