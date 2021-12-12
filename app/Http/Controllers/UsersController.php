@@ -28,10 +28,10 @@ class UsersController extends Controller
             return array(
                         'status'=>'success',
                         'message'=>'User account created succesfully!',
-                        'data'=>{
-                            'username':$user->email,
+                        'data'=>array(
+                            'username'=>$user->email,
                             'password'=>$user->password
-                        }
+                        )
                     );
         }catch(Exception $err){
             return array('status'=>'error','message'=>'Failed to create new user account!','error'=>$err);
