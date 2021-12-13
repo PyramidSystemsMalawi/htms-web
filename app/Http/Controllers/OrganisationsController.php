@@ -42,16 +42,16 @@ class OrganisationsController extends Controller
     {
         //Create Organisation
         try{
-            $organisation =  Organisation::create($request->all);
+            $organisation =  Organisation::create($request->all());
             return array(
                 'status'=>'success',
                 'message'=>'New organisation registered successfully!',
                 'data'=>$organisation
             );
-        }catc($err){
+        }catch(Exception $err){
             return response(array(
-                'status':'error',
-                'message':'Failed to create save data!',
+                'status'=>'error',
+                'message'=>'Failed to create save data!',
                 'error'=>$err
             ),500);
         }
