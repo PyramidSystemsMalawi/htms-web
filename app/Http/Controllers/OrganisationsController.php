@@ -63,9 +63,22 @@ class OrganisationsController extends Controller
      * @param  \App\Models\Organisation  $organisation
      * @return \Illuminate\Http\Response
      */
-    public function show(Organisation $organisation)
+    public function show($id)
     {
-        //
+
+       try{
+            $organisation = Organisation::findOrFail($id);
+            return array(
+                'status'=>"success",
+                'message'=>'Organisation record found!',
+                'data'=>$organisation
+            );
+        }catch(Exception $err){
+            return response(array(
+                'status'=>'error',
+                'massage'=>'The provided organisation_id does not exist!'
+            ));
+        }
     }
 
     /**
