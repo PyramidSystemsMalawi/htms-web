@@ -2,6 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use App\Models\Victim;
+use App\Models\Cases;
+use App\Models\Suspect;
+
+
+
+
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -13,9 +21,15 @@ class DashboardController extends Controller
             'firstname' => "Clifford",
             'lastname' => "Mwale"
         );
+        $stats = array(
+            'cases'=>count(Cases::all()),
+            'victims' => count(Victim::all()),
+            'suspects' => count(Suspect::all())
+        );
         return view('pages.welcome')->with(array(
             'title' => 'Dashboard',
-            'userdata'=>$userdata
+            'userdata'=>$userdata,
+            'stats'=>$stats
         ));
     }
 }

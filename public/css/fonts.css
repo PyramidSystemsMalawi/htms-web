@@ -7,3 +7,12 @@
     font-family: monaco;
     src: url(../fonts/Monaco.ttf);
 }
+@font-face {
+    font-family: mont;
+    src: url(../fonts/Montserrat-Regular.ttf);
+}
+
+@font-face {
+    font-family: roboto;
+    src: url(../fonts/RobotoCondensed-Regular.ttf);
+}

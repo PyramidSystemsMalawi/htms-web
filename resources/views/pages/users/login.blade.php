@@ -18,13 +18,13 @@
                         <div class="login login_pad" augmented-ui="tl-clip-y br-clip exe">
                             <form class="ui form" autocomplete="off">
                                 <div class="field fluid">
-                                    <input type="number" autocomplete="off" id="username" placeholder="Username">
+                                    <input type="email" autocomplete="off" id="username" placeholder="Username">
                                 </div>
                                 <div class="field fluid">
                                     <input type="password" autocomplete="off" id="password" placeholder="Password">
                                 </div>
                                 <div class="field fluid">
-                                    <button type="button" id="loginBtn" class="btn btn-md float-right btn-theme">Authenticate <i class="icon lock"></i></button>
+                                    <a href="/dashboard" id="loginBtn" class="btn btn-md float-right btn-secondary">Authenticate <i class="icon lock"></i></a>
                                 </div>
                                 <div class="field">
                                     <div style="color:#018cd6;" class="ui horizontal divider">OR</div>
@@ -49,5 +49,36 @@
    </div>
 
 
-    <script src="js/account.jsx"></script>
+    <script>
+        const BaseURL = "http:"
+        $(()=>{
+            let BaseURL = '{{config('app.url')}}'
+            $("#loginBtn").click(async ()=>{
+                const credentials = {
+                    'email':$("#username").val(),
+                    'password':$("#password").val()
+                }
+
+                const options = {
+                    method:"POST",
+                    headers:{
+                        'Content-Type':'application/json'
+                    },
+                    body:JSON.stringify(credentials)
+                }
+                try{
+                    let response = await fetch(`${BaseURL}/api/v1/users/auth`, options)
+                    let data = await response.json()
+                    if(data.status == 'success'){
+                        location.href = `dashboard`
+                    }else{
+                        alert(data.message)
+                    }
+                }catch(e){
+                    console.log(e)
+
+                }
+            })
+        })
+    </script>
 @endsection

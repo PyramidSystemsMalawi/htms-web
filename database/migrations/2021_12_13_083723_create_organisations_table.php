@@ -20,6 +20,7 @@ class CreateOrganisationsTable extends Migration
             $table->string('description',255)->nullable();
             $table->string('email', 50)->unique();
             $table->string('phone', 15);
+            $table->string('contact_person',200);
             $table->string('status')->enum('ACTIVE', 'CLOSED', 'SUSPENDED')->default('ACTIVE');
             $table->timestamps();
         });

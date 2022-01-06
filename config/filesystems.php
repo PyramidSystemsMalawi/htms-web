@@ -42,6 +42,19 @@ return [
             'visibility' => 'public',
         ],
 
+          'victims'=>[
+            'driver'=>'local',
+            'root'=>public_path('uploads/victims'),
+            'url'=>env('APP_URL').'/public/uploads/victims',
+            'visibility'=>'public'
+        ],
+         'suspects'=>[
+            'driver'=>'local',
+            'root'=>public_path('uploads/suspects'),
+            'url'=>env('APP_URL').'/public/uploads/suspects',
+            'visibility'=>'public'
+        ],
+
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),
@@ -68,6 +81,10 @@ return [
 
     'links' => [
         public_path('storage') => storage_path('app/public'),
+        public_path('victims') => public_path('uploads/victims'),
+        public_path('suspects') => public_path('uploads/suspects'),
+        public_path('backup') => storage_path('app/backup')
+
     ],
 
 ];

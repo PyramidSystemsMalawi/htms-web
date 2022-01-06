@@ -1,148 +1,310 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HTMS | {{$title}}</title>
 
-    <title>DS | {{$title}}</title>
-    <link rel="stylesheet" type="text/css" href="lib/augmented-ui/augmented.css">
-    <link rel="shortcut icon" href="img/browserlogo.png">
-    <link rel="stylesheet" href="css/common.css">
-    <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="lib/semantic/dist/semantic.min.css">
-    <link rel="stylesheet" href="lib/sweetalerts/sweetalert.css">
-    <link rel="stylesheet" href="css/fonts.css">
-
-    <script src="js/jquery-3.5.1.js"></script>
-    <script src="js/bootstrap-4.0.0.js"></script>
-    <script src="lib/semantic/dist/semantic.min.js"></script>
-    <script src="lib/sweetalerts/sweetalert.min.js"></script>
-    <script src="js/app.jsx"></script>
-
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- Tempusdominus Bootstrap 4 -->
+  <link rel="stylesheet" href="plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+  <!-- iCheck -->
+  <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+  <!-- JQVMap -->
+  <link rel="stylesheet" href="plugins/jqvmap/jqvmap.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="dist/css/adminlte.min.css">
+  <!-- overlayScrollbars -->
+  <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+  <!-- Daterange picker -->
+  <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
+  <!-- summernote -->
+  <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
+  {{-- <link rel="stylesheet" href="lib.DataTable/buttons.dataTable.min.css">
+  <link rel="stylesheet" href="lib/DataTable/jquery.dataTables.min.css"> --}}
+  <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+  <link rel="stylesheet" href="plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+<link rel="stylesheet" href="css/fonts.css">
+<link rel="stylesheet" href="lib/sweetalerts/sweetalert.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pivottable/2.23.0/pivot.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/c3/0.7.20/c3.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<style>
+    *{
+        font-family: 'roboto' ;
+    }
+</style>
+@if($title == 'Reports')
+<style>
+    .pivot-table-container {
+        height: 200px !important;
+        width: 100%;
+    }
+</style>
+@endif
 </head>
-<body class="ui dimmable ">
 
-        {{-- <div class="preloader pt-5 bg-white">
-        <center>
-            <div class="loader" style="margin-bottom: 0;">
+<body class="hold-transition sidebar-mini layout-fixed">
 
-          <div class="l0"></div>
-          <div class="l1 spin duration40s reverse"></div>
-          <div class="l2 spin duration10s"></div>
-          <div class="scaler scale duration1s alternate">
-            <div class="l3 spin duration10s reverse"></div>
-           </div>
-           <div class="scaler scale duration10s alternate">
-             <div class="l4 spin duration20s"></div>
-           </div>
-         </div>
-        </center>
-        <h3><span id="loading-msg" style="color:#018cd6;"></span></h3>
-    </div> --}}
+<div class="wrapper">
 
-    <link rel="stylesheet" href="css/dashboard.css">
-<div class="container-fluid main-wrapper ">
-    <div class="row">
-        <div class="wrapper wrapper0 col-12 " augmented-ui="tl-clip-x tl-clip br-clip-x exe">
-            <div class="ui grid">
-                <div class="three wide column">
-                    <div class="leftmenu leftmenu_pad my-3" augmented-ui="tl-clip-y br-clip exe">
-                        <div class="ui image bg-theme">
-                            <img src="/img/logo-main.png" alt="">
-                        </div>
-                         {{-- <label style="width:100%;background:#018cd6;" class="text-center text-white p-3 digital-font" augmented-ui="tl-clip-x exe">INTELLIGENCE TOOLS</label> --}}
-                        <div class="ui divider text-white"></div>
-                        <p style="font-family:" class="text-secondary">We value your feedback. Where can we improve? Click <a href="">here</a> to give your suggestion.</p>
-                        <div class="ui divider text-white"></div>
-                        <a href="" type="button" style="background:#018cd6;color:white;margin-top:.4em;"class="ui right labeled button  small icon fluid btn-theme" id="quick_search">
-                            Dashboard<i class="icon search"></i>
-                        </a href="">
-                        <a href="" type="button" style="background:#018cd6;color:white;margin-top:.4em;" class="ui right labeled button small icon fluid btn-theme" id="quick_search">
-                            Case Files <i class="icon globe"></i>
-                        </a href="">
-                        <a href="" type="button" style="background:#018cd6;color:white;margin-top:.4em;" class="ui right labeled button small icon fluid btn-theme" id="quick_search">
-                            People <i class="users alternate icon"></i>
-                        </a href="">
-                        <a href="/reports" type="button" style="background:#018cd6;color:white;margin-top:.4em;" class="ui right labeled button small icon fluid btn-theme" id="quick_search">
-                            Reports<i class="chart bar outline icon"></i>
-                        </a href="">
+  <!-- Navbar -->
+  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+    <!-- Left navbar links -->
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+      </li>
 
-                        <a type="button" style="background:#018cd6;color:white;margin-top:.4em;" class="ui right labeled button small icon fluid btn-theme" id="quick_search">
-                            Help <i class="icon help"></i>
-                        </a>
-                        <a href="" type="button" style="background:#018cd6;color:white;margin-top:.4em;" class="ui right labeled button small icon fluid btn-theme" id="quick_search">
-                            Settings <i class="icon cogs"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="thirteen wide column">
-                    <div class="ui grid pt-2">
-                        <div class="twelve wide column centralheader centralheader_pad mt-4" augmented-ui="tl-clip br-clip exe text-center">
-                            <h1 style="text-transform: uppercase !important;" class="digital-font text-white">{{$title}}</h1>
-                        </div>
-                        <div class="four wide column">
-                            <div class="rightmenu rightmenu_pad text-center" augmented-ui="tr-clip-y bl-clip exe">
-                                <p class="text-secondary m-0" style="text-transform: uppercase;">{{$userdata['firstname']}} {{$userdata['lastname']}}</p>
-                                <div class="ui divider m-0  text-white"></div>
-                                <a href="/logout" class="btn  m-1 btn-mb btn-block text-white" style="background:rgba(255, 217, 0, 0.76);" augmented-ui="bl-clip exe" >
-                                    Logout
-                                </a>
-                            </div>
-                        </div>
+    </ul>
 
-                    </div>
-                    <div class="row" style="padding:0;">
-                        <div class="col-12 pl-0">
-                            <div class="folder folder2 mt-3" style="left:0;" augmented-ui="b-clip-x exe">
 
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
+    <!-- Right navbar links -->
+    <ul class="navbar-nav ml-auto">
+      <!-- Messages Dropdown Menu -->
+
+      <!-- Notifications Dropdown Menu -->
+      <li class="nav-item dropdown">
+        <a class="nav-link" data-toggle="dropdown" href="#">
+          <i class="fa fa-power-off"></i>
+          <span class="badge badge-warning navbar-badge"></span>
+        </a>
+        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+          <div class="dropdown-divider"></div>
+          <a href="index.php" class="dropdown-item dropdown-footer">Logout</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-widget="fullscreen" href="#" role="button">
+          <i class="fas fa-expand-arrows-alt"></i>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
+          <i class="fas fa-th-large"></i>
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <!-- /.navbar -->
+
+  <!-- Main Sidebar Container -->
+  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="" class="brand-link">
+      <img src="logo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <span class="brand-text font-weight-light">HTMS</span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Sidebar user panel (optional) -->
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="image">
+          <img src="dist/img/avatar.png" class="img-circle elevation-2" alt="User Image">
+        </div>
+        <div class="info">
+          <a href="#" class="d-block">{{$userdata["firstname"]}} {{$userdata["lastname"]}}</a>
+        </div>
+      </div>
+
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+          <li class="nav-item">
+            <a href="dashboard" class="nav-link @if($title == 'Dashboard') active @endif">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Dashboard
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="/users" class="nav-link @if($title == 'Users') active @endif">
+              <i class="nav-icon fas fa-users"></i>
+              <p>
+                Users
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/organisations" class="nav-link @if($title == 'Organisations') active @endif">
+              <i class="nav-icon fas fa-sitemap"></i>
+              <p>
+                Organisations
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/cases" class="nav-link @if($title == 'Cases' || $title == 'View Case') active @endif">
+              <i class="nav-icon fas fa-folder-open"></i>
+              <p>
+                Case Files
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/reports" class="nav-link @if($title == 'Reports') active @endif">
+              <i class="nav-icon fas fa-folder-open"></i>
+              <p>
+                Reports
+              </p>
+            </a>
+          </li>
+
+        </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+  </aside>
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0">@if($title == 'Reports') {{$report_group}} @endif {{$title}} @if($title == 'View Case') | {{$casedetails->reference}} @endif </h1>
+          </div><!-- /.col -->
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">{{$title}} @if($title == 'View Case') | {{$casedetails->reference}} @endif </li>
+            </ol>
+          </div><!-- /.col -->
+          <div class="col-12"><hr></div>
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+          <div class="row">
+        <div class="col-12">
+            @if(Session::has('message'))
+                <p class="alert {{ Session::get('alert-class', 'alert-info') }} alert-dismissible fade show" role="alert">
+                {{ Session::get('message') }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </p>
+            @endif
         </div>
     </div>
+        <!-- Small boxes (Stat box) -->
+        @yield('content')
+        <!-- Main row -->
+        <div class="row">
+
+        </div>
+        <!-- /.row (main row) -->
+      </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+  <footer class="main-footer">
+    <strong><a href="">Pyramid Systems</a>.</strong>
+    All rights reserved.
+
+  </footer>
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
 </div>
+<!-- ./wrapper -->
 
-     <div class="ui dimmer" id="loadingDimmer">
-    <div class="ui text loader" id="loadingText">Loading...</div>
-    <div class="container">
-        <div class="loader">
-
-          <div class="l0"></div>
-          <div class="l1 spin duration40s reverse"></div>
-          <div class="l2 spin duration10s"></div>
-          <div class="scaler scale duration1s alternate">
-            <div class="l3 spin duration10s reverse"></div>
-           </div>
-           <div class="scaler scale duration10s alternate">
-             <div class="l4 spin duration20s"></div>
-           </div>
-         </div>
-        </div>
-    </div>
-</body>
+<!-- jQuery UI 1.11.4 -->
+<script src="plugins/jquery-ui/jquery-ui.min.js"></script>
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <script>
-        (function() {
-            let outerindex = 0;
-            var loaderText = document.getElementById("loading-msg");
-            var refreshIntervalId = setInterval(function() {
-                loaderText.innerHTML = getLoadingText(outerindex);
-                if(outerindex == 4){
-                    $('.preloader').hide();
-                    clearInterval(refreshIntervalId);
-                }
-                outerindex++;
-            }, 500);
+  //$.widget.bridge('uibutton', $.ui.button)
+</script>
+<!-- Bootstrap 4 -->
+<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- ChartJS -->
+<script src="plugins/chart.js/Chart.min.js"></script>
+<!-- Sparkline -->
+<script src="plugins/sparklines/sparkline.js"></script>
+<!-- JQVMap -->
+<script src="plugins/jqvmap/jquery.vmap.min.js"></script>
+<script src="plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
+<!-- jQuery Knob Chart -->
+<script src="plugins/jquery-knob/jquery.knob.min.js"></script>
+<!-- daterangepicker -->
+<script src="plugins/moment/moment.min.js"></script>
+<script src="plugins/daterangepicker/daterangepicker.js"></script>
+<!-- Tempusdominus Bootstrap 4 -->
+<script src="plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+<!-- Summernote -->
+<script src="plugins/summernote/summernote-bs4.min.js"></script>
+<!-- overlayScrollbars -->
+<script src="plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+<!-- AdminLTE App -->
+<script src="dist/js/adminlte.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="dist/js/demo.js"></script>
+<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 
-            function getLoadingText(index) {
-                var strLoadingText;
-                var arrLoadingText = ["Decrypting files", "Aesthesizing your account data", "Connecting to external databases", "Finalizing..."
-                ];
+<script src="plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script src="plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+<script src="plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+<script src="plugins/jszip/jszip.min.js"></script>
+<script src="plugins/pdfmake/pdfmake.min.js"></script>
+<script src="plugins/pdfmake/vfs_fonts.js"></script>
+<script src="plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+<script src="plugins/datatables-buttons/js/buttons.print.min.js"></script>
+<script src="plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-                return arrLoadingText[index];
-            }
-        })();
+@if($title == 'Reports')
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.7.20/c3.min.js" ></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.2.1/d3.min.js" ></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pivottable/2.23.0/pivot.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pivottable/2.23.0/c3_renderers.min.js" ></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pivottable/2.23.0/d3_renderers.min.js" ></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pivottable/2.23.0/tips_data.min.js" ></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pivottable/2.23.0/export_renderers.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pivottable/2.23.0/gchart_renderers.min.js" ></script>
 
-    </script>
+<script src="https://www.gstatic.com/charts/loader.js"></script>
+
+@endif
+<!-- <script type="text/javascript">
+  $(document).ready(function () {
+    function disableBack() {window.history.forward()}
+
+    window.onload = disableBack();
+    window.onpageshow = function (evt) {if (evt.persisted) disableBack()}
+});
+</script> -->
+{{-- <script src="lib/DataTable/jquery.dataTables.min.js"></script>
+<script src="lib/DataTable/jszip.min.js"></script>
+<script src="lib/DataTable/dataTables.buttons.min.js"></script>
+<script src="lib/DataTable/buttons.print.js"></script>
+<script src="lib/DataTable/buttons.html5.min.js"></script>
+<script src="lib/DataTable/buttons.flash.min.js"></script> --}}
+
+</body>
 </html>

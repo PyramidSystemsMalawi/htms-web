@@ -15,11 +15,16 @@ class OrganisationsController extends Controller
     public function index()
     {
         $organisations = Organisation::all();
-        return array(
-            'status'=>'success',
-            'message'=>count($organisations)." results found!",
-            'data'=>$organisations
+        $userdata = array(
+            'firstname' => "Clifford",
+            'lastname' => "Mwale"
         );
+        //var_dump($organisations);
+        return view('pages.organisations.list')->with(array(
+            'title'=>'Organisations',
+            'userdata'=>$userdata,
+            'organisations'=> $organisations
+        ));
     }
 
     /**
@@ -27,9 +32,22 @@ class OrganisationsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        try{
+            $organisation =  new Organisation();
+            $organisation->organisation_name = $request->organisation_name;
+            $organisation->physical_address = $request->physical_address;
+            $organisation->description = $request->description;
+            $organisation->email = $request->email;
+            $organisation->phone = $request->phone;
+
+            $organisation->save();
+        }catch(Exception $err){
+
+        }finally{
+            return redirect()->route('organisations-list');
+        }
     }
 
     /**
@@ -77,7 +95,7 @@ class OrganisationsController extends Controller
             return response(array(
                 'status'=>'error',
                 'massage'=>'The provided organisation_id does not exist!'
-            ));
+            ),400);
         }
     }
 

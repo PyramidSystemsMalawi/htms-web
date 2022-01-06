@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>{{$title}}</title>
-    <link rel="stylesheet" type="text/css" href="lib/augmented-ui/augmented.css">
+    <link rel="stylesheet"  type="text/css" href="lib/augmented-ui/augmented.css">
     <link rel="shortcut icon" href="img/browserlogo.png">
-    <link rel="stylesheet" href="css/common.css">
-    <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="lib/semantic/dist/semantic.min.css">
-    <link rel="stylesheet" href="lib/sweetalerts/sweetalert.css">
-    <link rel="stylesheet" href="css/fonts.css">
+    <link rel="stylesheet" type="text/css" href="css/common.css">
+    <link rel="stylesheet" type="text/css" href="lib/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="lib/semantic/dist/semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="lib/sweetalerts/sweetalert.css">
+    <link rel="stylesheet" type="text/css" href="css/fonts.css">
 
     <script src="js/jquery-3.5.1.js"></script>
     <script src="js/bootstrap-4.0.0.js"></script>
@@ -67,25 +67,25 @@
     </div>
 </body>
 <script>
-        (function() {
-            let outerindex = 0;
-            var loaderText = document.getElementById("loading-msg");
-            var refreshIntervalId = setInterval(function() {
-                loaderText.innerHTML = getLoadingText(outerindex);
-                if(outerindex == 3){
-                    $('.preloader').hide();
-                    clearInterval(refreshIntervalId);
-                }
-                outerindex++;
-            }, 500);
+        // (function() {
+        //     let outerindex = 0;
+        //     var loaderText = document.getElementById("loading-msg");
+        //     var refreshIntervalId = setInterval(function() {
+        //         loaderText.innerHTML = getLoadingText(outerindex);
+        //         if(outerindex == 3){
+        //             $('.preloader').hide();
+        //             clearInterval(refreshIntervalId);
+        //         }
+        //         outerindex++;
+        //     }, 500);
 
-            function getLoadingText(index) {
-                var strLoadingText;
-                var arrLoadingText = ["Compiling Assets...", "Preparing keys...", "Rendering UI..."];
+        //     function getLoadingText(index) {
+        //         var strLoadingText;
+        //         var arrLoadingText = ["Compiling Assets...", "Preparing keys...", "Rendering UI..."];
 
-                return arrLoadingText[index];
-            }
-        })();
+        //         return arrLoadingText[index];
+        //     }
+        // })();
 
     </script>
 </html>

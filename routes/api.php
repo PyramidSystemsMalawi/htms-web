@@ -19,10 +19,16 @@ Route::prefix('v1')->group(function(){
     Route::post('users', 'UsersController@store');
     Route::get('users', 'UsersController@all');
     Route::get('users/{user_id}', 'UsersController@find');
+
 });
 
 Route::prefix('v1')->group(function(){
     Route::resource('organisations', 'OrganisationsController');
+    Route::resource('cases', 'CasesController');
+    Route::resource('victims', 'VictimsController');
+    Route::resource('suspects', 'SuspectsController');
+    Route::resource('notes', 'NotesController');
+    Route::resource('assessments', 'VictimsAssesmentController');
 });
 
 
