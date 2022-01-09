@@ -56,9 +56,9 @@
     <div class="col-12"> <br> </div>
     <div class="col-12">
         <table class="table table-sm table-bordered table-striped">
-            <tr><th>Number Of Victims : </th> <th> <a href="#">9</a> </th> </tr>
-            <tr><th>Number Of Suspects : </th> <th> <a href="#">6</a> </th> </tr>
-            <tr><th>Number Of Officer : </th> <th> <a href="#">2</a> </th> </tr>
+            <tr><th>Number Of Victims : </th> <th> <a href="#"><?php echo e($casedetails->victims); ?></a> </th> </tr>
+            <tr><th>Number Of Suspects : </th> <th> <a href="#"><?php echo e($casedetails->suspects); ?></a> </th> </tr>
+            <tr><th>Number Of Officer : </th> <th> <a href="#"><?php echo e($casedetails->officers); ?></a> </th> </tr>
 
         </table>
     </div>

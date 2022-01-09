@@ -13,22 +13,28 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'DashboardController@index');//->middleware('sessionCheck');
-Route::get('/dashboard', 'DashboardController@index');//->middleware('sessionCheck');
+Route::get('/', 'DashboardController@index')->name('dashboard')->middleware('auth');
+Route::get('/dashboard', 'DashboardController@index')->name('dashboard')->middleware('auth');
 Route::get('/login', 'UsersController@login')->name('login');
 
-Route::get('/users', 'UsersController@index')->name('users_list');//->middleware('sessionCheck');
+Route::get('/users', 'UsersController@index')->name('users_list')->middleware('auth');
+Route::post('/users/login', 'AuthController@doLogin');
+Route::get('/users/logout', 'AuthController@logout');
+Route::post('/users/create', 'UsersController@create')->middleware('auth');
+Route::get('/organisations', 'OrganisationsController@index')->name('organisations-list')->middleware('auth');
+Route::post('/createOrganisation', 'OrganisationsController@create')->middleware('auth');
+Route::get('/cases', 'CasesController@list')->name('case-list')->middleware('auth');
 
-Route::post('/users/create', 'UsersController@create');//->middleware('sessionCheck');
-Route::get('/organisations', 'OrganisationsController@index')->name('organisations-list');//->middleware('sessionCheck');
-Route::post('/createOrganisation', 'OrganisationsController@create');//->middleware('sessionCheck');
-Route::get('/cases', 'CasesController@list')->name('case-list');//->middleware('sessionCheck');
+Route::get('/viewCase','CasesController@view')->middleware('auth');
+Route::get('/cases/delete', 'CasesController@destroy')->middleware('auth');
 
-Route::get('/viewCase','CasesController@view');//->middleware('sessionCheck');
-Route::get('/cases/delete', 'CasesController@destroy');//->middleware('sessionCheck');
-
-Route::get('/reports', 'ReportsController@index')->name('reports-list');//->middleware('sessionCheck');
-Route::get('/viewReport', 'ReportsController@show');//->middleware('sessionCheck');
+Route::get('/reports', 'ReportsController@index')->name('reports-list')->middleware('auth');
+Route::get('/viewReport', 'ReportsController@show')->middleware('auth');
 
 Route::post('/cases/transfer', 'CaseTransferController@store');
-Route::get('/users/{id}/delete', 'UsersController@destroy');//->middleware('sessionCheck');
+Route::get('/users/{id}/delete', 'UsersController@destroy')->middleware('auth');
+
+Route::get('/qualifiers', 'QualifiersController@index')->name('qualifiers-list')->middleware('auth');
+Route::post('/qualifiers', 'QualifiersController@store')->middleware('auth');
+Route::get('/qualifiers/delete', 'QualifiersController@destroy')->middleware('auth');
+

@@ -3,6 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
   <title>HTMS | {{$title}}</title>
 
   <!-- Google Font: Source Sans Pro -->
@@ -78,7 +80,7 @@
         </a>
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
           <div class="dropdown-divider"></div>
-          <a href="index.php" class="dropdown-item dropdown-footer">Logout</a>
+          <a href="users/logout" class="dropdown-item dropdown-footer">Logout</a>
         </div>
       </li>
       <li class="nav-item">
@@ -153,6 +155,14 @@
               </p>
             </a>
           </li>
+           <li class="nav-item">
+            <a href="/qualifiers" class="nav-link @if($title == 'TIP CheckList') active @endif">
+              <i class="nav-icon fas fa-check"></i>
+              <p>
+                TIP ChekList
+              </p>
+            </a>
+          </li>
           <li class="nav-item">
             <a href="/reports" class="nav-link @if($title == 'Reports') active @endif">
               <i class="nav-icon fas fa-folder-open"></i>
@@ -195,14 +205,7 @@
       <div class="container-fluid">
           <div class="row">
         <div class="col-12">
-            @if(Session::has('message'))
-                <p class="alert {{ Session::get('alert-class', 'alert-info') }} alert-dismissible fade show" role="alert">
-                {{ Session::get('message') }}
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                </p>
-            @endif
+            @include('messages')
         </div>
     </div>
         <!-- Small boxes (Stat box) -->

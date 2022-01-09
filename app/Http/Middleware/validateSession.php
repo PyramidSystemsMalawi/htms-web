@@ -19,9 +19,10 @@ class validateSession
     public function handle(Request $request, Closure $next)
     {
         $session = Session::get('isLoggedIN');
-        if(!isset($session->email)){
-            return redirect()->route('login');
-        }
-        return $next($request);
+        return var_dump($session);
+        // if(!isset($session->email)){
+        //     return redirect()->route('login');
+        // }
+        // return $next($request);
     }
 }

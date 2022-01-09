@@ -3,6 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
+
   <title>HTMS | <?php echo e($title); ?></title>
 
   <!-- Google Font: Source Sans Pro -->
@@ -77,7 +79,7 @@
         </a>
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
           <div class="dropdown-divider"></div>
-          <a href="index.php" class="dropdown-item dropdown-footer">Logout</a>
+          <a href="users/logout" class="dropdown-item dropdown-footer">Logout</a>
         </div>
       </li>
       <li class="nav-item">
@@ -152,6 +154,14 @@
               </p>
             </a>
           </li>
+           <li class="nav-item">
+            <a href="/qualifiers" class="nav-link <?php if($title == 'TIP CheckList'): ?> active <?php endif; ?>">
+              <i class="nav-icon fas fa-check"></i>
+              <p>
+                TIP ChekList
+              </p>
+            </a>
+          </li>
           <li class="nav-item">
             <a href="/reports" class="nav-link <?php if($title == 'Reports'): ?> active <?php endif; ?>">
               <i class="nav-icon fas fa-folder-open"></i>
@@ -194,15 +204,7 @@
       <div class="container-fluid">
           <div class="row">
         <div class="col-12">
-            <?php if(Session::has('message')): ?>
-                <p class="alert <?php echo e(Session::get('alert-class', 'alert-info')); ?> alert-dismissible fade show" role="alert">
-                <?php echo e(Session::get('message')); ?>
-
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                </p>
-            <?php endif; ?>
+            <?php echo $__env->make('messages', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
         </div>
     </div>
         <!-- Small boxes (Stat box) -->

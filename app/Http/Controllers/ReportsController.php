@@ -8,15 +8,14 @@ use App\Models\Cases;
 use App\Models\Victim;
 use App\Models\Suspect;
 use App\Models\Organisation;
+use Illuminate\Support\Facades\Auth;
+
 
 
 class ReportsController extends Controller
 {
     public function index(){
-        $userdata = array(
-            'firstname' => "Clifford",
-            'lastname' => "Mwale"
-        );
+        $userdata = Auth::user();
         return view('pages.reports.list')->with(array(
             'title'=>'Reports',
             'userdata'=>$userdata,
@@ -26,10 +25,7 @@ class ReportsController extends Controller
 
     public function show(Request $request){
         try{
-            $userdata = array(
-                'firstname' => "Clifford",
-                'lastname' => "Mwale"
-            );
+            $userdata = Auth::user();
 
             $type = $request->report_type;
             $view_name = "";

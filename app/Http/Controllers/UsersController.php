@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Hash;
 
 class UsersController extends Controller
 {
@@ -20,10 +22,7 @@ class UsersController extends Controller
         ->get(['users.*', 'organisations.organisation_name','roles.role_name']);
         $roles = Role::all();
         $organisations = Organisation::all();
-        $userdata = array(
-            'firstname' => "Clifford",
-            'lastname' => "Mwale"
-        );
+        $userdata = Auth::user();
         //var_dump($organisations);
         return view('pages.users.list')->with(array(
             'title'=>'Users',
@@ -43,6 +42,8 @@ class UsersController extends Controller
             $user->email = $request->email;
             $user->role = $request->role;
             $user->organisation = $request->organisation;
+
+
 
             $user->save();
 
@@ -85,10 +86,14 @@ class UsersController extends Controller
             $user->role = $request->role;
             $user->organisation = $request->organisation;
 
+            $clearTextPassword = Str::random(10);
+            $user->password = Hash::make($clearTextPassword);
+
             $user->save();
         }catch(Exception $err){
 
-        }finally{
+        }
+        finally{
             return redirect()->route('users_list');
         }
     }
@@ -132,7 +137,7 @@ class UsersController extends Controller
     public function destroy(Request $request, $id){
 
         $user = User::find($id)->update(['status'=>'DELETED']);
-        
+
         return redirect()->route('users_list');
     }
 }

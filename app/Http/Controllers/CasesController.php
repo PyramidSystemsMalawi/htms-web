@@ -8,8 +8,11 @@ use App\Models\Cases;
 use App\Models\Victim;
 use App\Models\Suspect;
 use App\Models\Organisation;
+use App\Models\CaseOfficer;
 use Illuminate\Http\Request;
 use App\Http\Controllers\NotesController;
+use Illuminate\Support\Facades\Auth;
+
 
 
 class CasesController extends Controller
@@ -99,10 +102,7 @@ class CasesController extends Controller
 
     public function list(Request $request){
         try{
-            $userdata = array(
-                'firstname' => "Clifford",
-                'lastname' => "Mwale"
-            );
+            $userdata = Auth::user();
             $case_list = Cases::join('case_officers', 'case_officers.case', '=', 'cases.reference')->join('users', 'users.email', '=', 'case_officers.officer')->get(['cases.*', 'case_officers.officer', 'users.firstname', 'users.lastname']);
 
             for ($i = 0; $i < count($case_list); $i++) {
@@ -120,14 +120,16 @@ class CasesController extends Controller
         }
     }
     public function view(Request $request){
-        $userdata = array(
-            'firstname' => "Clifford",
-            'lastname' => "Mwale"
-        );
+        $userdata = Auth::user();
         $casedetails = Cases::join('case_officers', 'case_officers.case', '=', 'cases.reference')
         ->join('users', 'users.email', '=', 'case_officers.officer')
         ->where('cases.reference', '=', $request->case_reference)
             ->get(['cases.*', 'case_officers.officer', 'users.firstname', 'users.lastname','users.organisation']);
+
+        $casedetails[0]['victims'] = count(Victim::where('case_reference', '=', $request->case_reference)->get());
+        $casedetails[0]['suspects'] = count(Suspect::where('case_reference', '=', $request->case_reference)->get());
+        $casedetails[0]['officers'] = count(CaseOfficer::where('case', '=', $request->case_reference)->get());
+
 
         $organisations = Organisation::where('id' , '!=', $casedetails[0]->organisation)->get();
 

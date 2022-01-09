@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Organisation;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 
 class OrganisationsController extends Controller
 {
@@ -15,10 +17,7 @@ class OrganisationsController extends Controller
     public function index()
     {
         $organisations = Organisation::all();
-        $userdata = array(
-            'firstname' => "Clifford",
-            'lastname' => "Mwale"
-        );
+        $userdata = Auth::user();
         //var_dump($organisations);
         return view('pages.organisations.list')->with(array(
             'title'=>'Organisations',

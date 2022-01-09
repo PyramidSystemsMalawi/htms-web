@@ -11,20 +11,47 @@
                     <img src="img/logo-main.png" alt="Application Logo">
                 </div>
             </header>
-
+            <div class="col-6 mx-auto">
+                          @if($errors->first('email') != null && !empty($errors->first('email')))
+                          <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <strong>Access Denied: </strong>  {{ $errors->first('email') }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            </div>
+                        @endif
+                          @if($errors->first('password') != null && !empty($errors->first('password')))
+                          <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <strong>Access Denied: </strong>  {{ $errors->first('password') }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            </div>
+                        @endif
+                         @if($errors->first('access_denied') != null && !empty($errors->first('access_denied')))
+                          <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <strong>Access Denied: </strong>  {{ $errors->first('access_denied') }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            </div>
+                        @endif
+                    </div>
             <main class="col-12" id="central_container">
                 <div class="row">
+
                     <div class=" col-md-10 col-lg-4 mx-auto mt-10">
                         <div class="login login_pad" augmented-ui="tl-clip-y br-clip exe">
-                            <form class="ui form" autocomplete="off">
+                            <form class="ui form" method="POST" action="users/login" autocomplete="off">
+                            @csrf
                                 <div class="field fluid">
-                                    <input type="email" autocomplete="off" id="username" placeholder="Username">
+                                    <input type="email" autocomplete="off" name="email" id="username" placeholder="Username">
                                 </div>
                                 <div class="field fluid">
-                                    <input type="password" autocomplete="off" id="password" placeholder="Password">
+                                    <input type="password" autocomplete="off" name="password" id="password" placeholder="Password">
                                 </div>
                                 <div class="field fluid">
-                                    <a href="/dashboard" id="loginBtn" class="btn btn-md float-right btn-secondary">Authenticate <i class="icon lock"></i></a>
+                                    <button type="submit"  id="loginBtn" class="btn btn-md float-right btn-secondary">Authenticate <i class="icon lock"></i></button>
                                 </div>
                                 <div class="field">
                                     <div style="color:#018cd6;" class="ui horizontal divider">OR</div>
@@ -69,11 +96,13 @@
                 try{
                     let response = await fetch(`${BaseURL}/api/v1/users/auth`, options)
                     let data = await response.json()
-                    if(data.status == 'success'){
-                        location.href = `dashboard`
-                    }else{
-                        alert(data.message)
-                    }
+                    console.log(data)
+                    return
+                    // if(data.status == 'success'){
+                    //     location.href = `dashboard`
+                    // }else{
+                    //     alert(data.message)
+                    // }
                 }catch(e){
                     console.log(e)
 

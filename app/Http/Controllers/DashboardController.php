@@ -6,10 +6,7 @@ use App\Models\User;
 use App\Models\Victim;
 use App\Models\Cases;
 use App\Models\Suspect;
-
-
-
-
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -17,10 +14,7 @@ class DashboardController extends Controller
     //Render the dashboard view
     public function index()
     {
-        $userdata = array(
-            'firstname' => "Clifford",
-            'lastname' => "Mwale"
-        );
+        $userdata = Auth::user();
         $stats = array(
             'cases'=>count(Cases::all()),
             'victims' => count(Victim::all()),
