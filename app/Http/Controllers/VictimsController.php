@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Victim;
+use App\Models\Cases;
+use App\Models\QualifierResponse;
 use Illuminate\Http\Request;
 use App\Http\Controllers\FileController;
+use Illuminate\Support\Facades\Auth;
 
 class VictimsController extends Controller
 {
@@ -25,8 +28,35 @@ class VictimsController extends Controller
         }
     }
 
-   
-   
+   public function list(Request $request){
+       $victims = Victim::all();
+        $userdata = Auth::user();
+        return view('pages.victims.list')->with(array(
+            'title'=>'Victims',
+            'victims'=>$victims,
+            'userdata'=>$userdata
+        ));
+   }
+
+    public function view(Request $request)
+    {
+        $victims = Victim::where('id','=',$request->victim_id)->get();
+        $interview = QualifierResponse::where('victim','=',$request->victim_id)->get();
+        $interview = unserialize($interview[0]->responses);
+        $case = Cases::where('reference','=',$victims[0]->case_reference)->get();
+        // var_dump($interview);
+        // return;
+        // $interview = json_decode($interview);
+        $userdata = Auth::user();
+        return view('pages.victims.view')->with(array(
+            'title' => 'Victims',
+            'victimdetails' => $victims[0],
+            'userdata' => $userdata,
+            'interviews'=> $interview,
+            'case'=>$case[0]
+        ));
+    }
+
     public function store(Request $request)
     {
         //Add victim to case
@@ -60,7 +90,7 @@ class VictimsController extends Controller
         }
     }
 
- 
+
     public function show(Victim $victim)
     {
         //
@@ -78,7 +108,7 @@ class VictimsController extends Controller
         //
     }
 
-   
+
     public function destroy($id)
     {
         //Permanently delete victim's profile

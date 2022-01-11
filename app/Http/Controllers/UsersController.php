@@ -33,6 +33,13 @@ class UsersController extends Controller
         ));
     }
 
+    public function matchByOrganisation(Request $request){
+        $officers = User::where('organisation','=', $request->org_id)->get();
+        return array(
+            'status'=>'success',
+            'data'=>$officers
+        );
+    }
     public function store(Request $request){
 
         try{
@@ -113,25 +120,27 @@ class UsersController extends Controller
             'password' => 'required|string'
         ]);
 
-        $user = User::where('email', $request->email)->first();
-        if(!$user || $fields['password'] != $user->password){
-            return response([
-                'status'=>'error',
-                'message'=>'Wrong username or password!'
-            ], 401);
+        //return $request->all();
+
+        if(Auth::attempt($request->all())){
+
+            $user = Auth::user();
+            $token = $user->createToken('token')->plainTextToken;
+
+            $response = [
+                'status'=>'success',
+                'message'=>'Login was successful!',
+                'user'=>$user,
+                'token'=>$token
+            ];
+            return response($response,201);
         }
 
-        $token = $user->createToken('token')->plainTextToken;
-        Session::put('isLoggedIN', $user);
-
-        $response = [
-            'status'=>'success',
-            'message'=>'Login was successful!',
-            'user'=>$user,
-            'token'=>$token
-        ];
-
-        return response($response,201);
+        return response([
+            'status'=>'error',
+            'message'=>'Wrong username or password!'
+        ], 401);
+        
     }
 
     public function destroy(Request $request, $id){

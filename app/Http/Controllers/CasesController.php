@@ -74,6 +74,9 @@ class CasesController extends Controller
         try {
             $case = new Cases();
             $case->case_name = $request->case_title;
+            $case->district = $request->district;
+            $case->traditional_authority = $request->trad_auth;
+            $case->village = $request->village;
             $case->brief = $request->brief;
 
             $case->save();

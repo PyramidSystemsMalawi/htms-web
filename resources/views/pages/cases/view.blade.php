@@ -2,7 +2,22 @@
 
 
 @section('content')
+<script>
 
+    let activeCase
+
+    let setActiveCase = (reference)=>{
+        activeCase = reference;
+    }
+
+    let DeleteCase = async (reference)=>{
+        let prompt = confirm(`Are you sure you want to delete case "${reference}" and all its contents?`);
+        if(prompt){
+            location.href = 'cases/delete?case_reference='+reference;
+        }
+    }
+
+</script>
 <div class="row">
     <div class="col-3">
         <div id="previewImage"></div>
@@ -32,7 +47,7 @@
                 </tr>
                 <tr>
                     <th><i class="fa fa-map-marker-alt"></i> Locale :</th>
-                    <th>Chamama Village, T/A Wimbe, Kasungu</th>
+                    <th>{{ucfirst($casedetails->village)}} ,{{$casedetails->traditional_authority}}, {{$casedetails->district}}</th>
                 </tr>
                 <tr>
                     <th><i class="fa fa-user"></i> Officer :</th>
@@ -95,13 +110,9 @@
             </div>
             <div class="form-group col-12">
                 <label for="">Recepient Officer :</label>
-                <select name="recepient_officer"  class="form-control">
-                    <option value="">Select Officer</option>
-                    @if(count($availOfficers) > 0)
-                        @foreach($availOfficers as $officer)
-                            <option value="{{$officer->email}}">{{$officer->firstname}} {{$officer->lastname}}</option>
-                        @endforeach
-                    @endif
+                <select name="recepient_officer" id="recepient_officer"  class="form-control">
+
+
                 </select>
             </div>
             {{-- Render available officers list --}}
@@ -133,22 +144,27 @@
 </style>
 
 <script>
-    let activeCase
 
+    let baseURL = window.location.origin;
+   // alert(baseURL)
     $(()=>{
-
+        $("#transfer_to").change(async function(){
+           // alert('Hi')
+            try{
+                let res = await fetch(baseURL+"/api/v1/organisations/officers?org_id="+this.value)
+                res = await res.json()
+                if(res.status == 'success'){
+                    let DOM = res.data.map(officer=>{
+                        return `<option value="${officer.email}">${officer.firstname} ${officer.lastname}</option>`
+                    }).join(',')
+                    DOM = "<option value=''>Select Officer</option>"+DOM
+                    $("#recepient_officer").html(DOM)
+                }
+            }catch(err){
+                console.log(err)
+            }
+        })
     })
-
-    let setActiveCase = (reference)=>{
-        activeCase = reference;
-    }
-
-    let DeleteCase = async (reference)=>{
-        let prompt = confirm(`Are you sure you want to delete case "${reference}" and all its contents?`);
-        if(prompt){
-            location.href = 'cases/delete?case_reference='+reference;
-        }
-    }
 </script>
 
 @endsection

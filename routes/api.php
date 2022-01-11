@@ -23,12 +23,21 @@ Route::prefix('v1')->group(function(){
 });
 
 Route::prefix('v1')->group(function(){
+    Route::get('organisations/officers', 'UsersController@matchByOrganisation');
+    Route::get('organisations/reports', 'ReportsController@getOrgReports');
+
     Route::resource('organisations', 'OrganisationsController');
     Route::resource('cases', 'CasesController');
     Route::resource('victims', 'VictimsController');
     Route::resource('suspects', 'SuspectsController');
     Route::resource('notes', 'NotesController');
     Route::resource('assessments', 'VictimsAssesmentController');
+    Route::resource('districts', 'DistrictController');
+    Route::get('qualifiers', 'QualifiersController@list');
+    Route::post('qualifiers/responses', 'QualifierResponsesController@store');
+    Route::get('qualifiers/responses', 'QualifierResponsesController@index');
+
+
 });
 
 

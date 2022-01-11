@@ -37,6 +37,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pivottable/2.23.0/pivot.min.css" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/c3/0.7.20/c3.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="js/jquery.jsx"></script>
 <style>
     *{
         font-family: 'roboto' ;
@@ -160,6 +161,14 @@
               <i class="nav-icon fas fa-check"></i>
               <p>
                 TIP ChekList
+              </p>
+            </a>
+          </li>
+           <li class="nav-item">
+            <a href="/victims-list" class="nav-link @if($title == 'Victims') active @endif">
+              <i class="nav-icon fas fa-street-view"></i>
+              <p>
+                Victims
               </p>
             </a>
           </li>

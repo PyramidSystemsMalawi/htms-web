@@ -5,7 +5,7 @@
 <div class="container-fluid main-wrapper ">
         <div class="row">
             <header class="col-8 mx-auto text-center text-secondary">
-                <h3 class=" mt-5 mb-0" id="login_title">OS1 Dot Intelligence<br> <span style="font-family: 'Yu Gothic UI'; font-size:35px;"></span> </h3>
+                <h3 class=" mt-5 mb-0" id="login_title">HTMS<br> <span style="font-family: 'Yu Gothic UI'; font-size:35px;"></span> </h3>
 
                 <div class="image ui m-0">
                     <img src="img/logo-main.png" alt="Application Logo">
@@ -42,7 +42,7 @@
 
                     <div class=" col-md-10 col-lg-4 mx-auto mt-10">
                         <div class="login login_pad" augmented-ui="tl-clip-y br-clip exe">
-                            <form class="ui form" method="POST" action="users/login" autocomplete="off">
+                            <form class="ui form" d="loginForm" method="POST" action="users/login" autocomplete="off">
                             @csrf
                                 <div class="field fluid">
                                     <input type="email" autocomplete="off" name="email" id="username" placeholder="Username">
@@ -51,7 +51,8 @@
                                     <input type="password" autocomplete="off" name="password" id="password" placeholder="Password">
                                 </div>
                                 <div class="field fluid">
-                                    <button type="submit"  id="loginBtn" class="btn btn-md float-right btn-secondary">Authenticate <i class="icon lock"></i></button>
+                                    <button type="submit"  id="loginBtn"
+                                    class="btn btn-md float-right btn-secondary ui button">Authenticate <i class="icon lock"></i></button>
                                 </div>
                                 <div class="field">
                                     <div style="color:#018cd6;" class="ui horizontal divider">OR</div>
@@ -63,7 +64,8 @@
                             </form>
                         </div>
                         <div class="m-3 p-2 ">
-                            <div class="ui horizontal divider text-danger" style="font-family: orbitron !important;">NO UNAUTHORIZED USE</div>
+                            <div class="ui horizontal divider text-danger"
+                            style="font-family: orbitron !important;">NO UNAUTHORIZED USE</div>
                         </div>
                     </div>
                 </div>
@@ -80,33 +82,8 @@
         const BaseURL = "http:"
         $(()=>{
             let BaseURL = '{{config('app.url')}}'
-            $("#loginBtn").click(async ()=>{
-                const credentials = {
-                    'email':$("#username").val(),
-                    'password':$("#password").val()
-                }
-
-                const options = {
-                    method:"POST",
-                    headers:{
-                        'Content-Type':'application/json'
-                    },
-                    body:JSON.stringify(credentials)
-                }
-                try{
-                    let response = await fetch(`${BaseURL}/api/v1/users/auth`, options)
-                    let data = await response.json()
-                    console.log(data)
-                    return
-                    // if(data.status == 'success'){
-                    //     location.href = `dashboard`
-                    // }else{
-                    //     alert(data.message)
-                    // }
-                }catch(e){
-                    console.log(e)
-
-                }
+            $("#loginForm").submit(()=>{
+                $("#loginBtn").addClass('loading')
             })
         })
     </script>

@@ -38,3 +38,5 @@ Route::get('/qualifiers', 'QualifiersController@index')->name('qualifiers-list')
 Route::post('/qualifiers', 'QualifiersController@store')->middleware('auth');
 Route::get('/qualifiers/delete', 'QualifiersController@destroy')->middleware('auth');
 
+Route::get('/victims-list', 'VictimsController@list')->name('victims')->middleware('auth');
+Route::get('viewVictim','VictimsController@view')->middleware('auth');

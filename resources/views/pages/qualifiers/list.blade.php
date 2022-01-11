@@ -2,7 +2,12 @@
 
 @section('content')
 <div class="row">
-    <div class="col-9">
+    <div class="col-12">
+        <p class="text-danger text-center">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tenetur deleniti eveniet ex dolor quod suscipit mollitia voluptatem distinctio at esse.
+             Cum facere similique doloremque dicta deleniti. Vero quo sit dicta.</p>
+             <hr>
+    </div>
+    <div class="col-12">
         <div class="row card">
     <div class="col-12 text-right py-2 card-header">
         <button data-toggle="modal" data-target="#add"
@@ -12,7 +17,7 @@
         <table class="table table-sm table-striped table-hover table-bordered">
             <thead class="">
                 <th>#</th>
-                <th>Question</th>
+                <th style="width:30% !important">Question</th>
                 <th>ResponseType</th>
                 <th>Predefined-Answers</th>
                 <th>Nullable</th>
@@ -44,24 +49,10 @@
 </div>
 
     </div>
-    <div class="col-3">
-        <div class="card">
-        <div class="card-header p-0 bg-secondary">
-            <h4 class=" text-white p-2">Biline</h4>
-        </div>
-       <div class="card-body">
-            <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Itaque harum, sint veniam dicta ratione tempore quam exercitationem odio
-             recusandae vel beatae molestiae animi magni a omnis eligendi
-              perspiciatis incidunt voluptas.
-        </p>
-       </div>
-        </div>
-    </div>
+
 </div>
 
-<div class="modal fade" id="add">
+                <div class="modal fade" id="add">
                         <div class="modal-dialog modal-md">
                             <form action="/qualifiers" method="POST" >
                             @csrf

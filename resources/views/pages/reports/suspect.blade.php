@@ -23,7 +23,7 @@
 
             var derivers = $.pivotUtilities.derivers;
             var renderers = $.extend($.pivotUtilities.renderers,
-            $.pivotUtilities.gchart_renderers);
+            $.pivotUtilities.export_renderers);
 
             $("#output").pivotUI(cases.data, {
                 renderers,

@@ -21,6 +21,11 @@ class QualifiersController extends Controller
         ));
     }
 
+    public function list()
+    {
+        $qualifiers = Qualifier::all();
+        return $qualifiers;
+    }
 
     public function create()
     {

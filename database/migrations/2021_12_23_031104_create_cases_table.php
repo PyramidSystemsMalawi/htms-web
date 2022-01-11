@@ -17,6 +17,9 @@ class CreateCasesTable extends Migration
             $table->id();
             $table->string('reference',15)->unique();
             $table->string('case_name',100);
+            $table->string('district',20)->nullable();
+            $table->string('traditional_authority',100)->nullable();
+            $table->string('village',50)->nullable();
             $table->text('brief',5000)->nullable();
             $table->string('status')->enum('OPEN','CLOSED')->default('OPEN');
             $table->string('stage')->enum('INVESTIGATION','LITIGATION','CONVICTION','DISMISSAL')->default('INVESTIGATION');

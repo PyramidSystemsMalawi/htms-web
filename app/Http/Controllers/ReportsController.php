@@ -41,6 +41,10 @@ class ReportsController extends Controller
                 $report = Suspect::all();
                 $view_name = 'pages.reports.suspect';
             }
+            if ($type == 'Organisations') {
+                $report = Organisation::all();
+                $view_name = 'pages.reports.organisation';
+            }
             return view($view_name)->with(array(
                 'title' => 'Reports',
                 'userdata' => $userdata,
@@ -50,6 +54,16 @@ class ReportsController extends Controller
         }catch(Exception $err){
 
         }
+    }
+
+    public function getOrgReports(){
+        $report = Organisation::all();
+        foreach ($report as $key => $value) {
+            $report[$key]->users = count(User::where('organisation', '=', $value->id)->get());
+            $report[$key]->cases = count(Cases::join('case_officers','cases.reference','=','case_officers.case')
+            ->join('users','users.email','=','case_officers.officer')->where('users.organisation', '=', $value->id)->get());
+        }
+        return $report;
     }
 
 

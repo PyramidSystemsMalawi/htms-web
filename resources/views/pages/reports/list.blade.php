@@ -12,11 +12,10 @@
     <div class="col-12">
         <ul>
             <li><a href="/viewReport?report_type=Cases&rid=">>> Case Reports</a></li>
-            <li><a href="/viewReport?report_type=Users&rid=">>> Users Reports</a></li>
             <li><a href="/viewReport?report_type=Victims&rid=">>> Victims Reports</a></li>
             <li><a href="/viewReport?report_type=Suspects&rid=">>> Suspects Reports</a></li>
-            <li><a href="/viewReport?report_type=Officers&rid=">>> Officers Reports</a></li>
-            <li><a href="/viewReport?report_type=Transfers&rid=">>> Transfers Reports</a></li>
+            {{-- <li><a href="/viewReport?report_type=Officers&rid=">>> Officers Reports</a></li> --}}
+            {{-- <li><a href="/viewReport?report_type=Transfers&rid=">>> Transfers Reports</a></li> --}}
             <li><a href="/viewReport?report_type=Organisations&rid=">>> Organisations Reports</a></li>
 
 

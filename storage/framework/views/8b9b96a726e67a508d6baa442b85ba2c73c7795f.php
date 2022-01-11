@@ -23,7 +23,7 @@
 </head>
 <body class="ui dimmable" style="background-color:whitesmoke !important;">
 
-        
+
 
     <div class="container-fluid main-wrapper ">
         <div class="row">
@@ -51,27 +51,6 @@
         </div>
     </div>
 </body>
-<script>
-        // (function() {
-        //     let outerindex = 0;
-        //     var loaderText = document.getElementById("loading-msg");
-        //     var refreshIntervalId = setInterval(function() {
-        //         loaderText.innerHTML = getLoadingText(outerindex);
-        //         if(outerindex == 3){
-        //             $('.preloader').hide();
-        //             clearInterval(refreshIntervalId);
-        //         }
-        //         outerindex++;
-        //     }, 500);
 
-        //     function getLoadingText(index) {
-        //         var strLoadingText;
-        //         var arrLoadingText = ["Compiling Assets...", "Preparing keys...", "Rendering UI..."];
-
-        //         return arrLoadingText[index];
-        //     }
-        // })();
-
-    </script>
 </html>
 <?php /**PATH C:\wamp64\www\htms-beta\resources\views/layouts/secondary.blade.php ENDPATH**/ ?>
