@@ -42,10 +42,16 @@ return [
             'visibility' => 'public',
         ],
 
-          'victims'=>[
+        'victims'=>[
             'driver'=>'local',
             'root'=>public_path('uploads/victims'),
             'url'=>env('APP_URL').'/public/uploads/victims',
+            'visibility'=>'public'
+        ],
+        'exhibit'=>[
+            'driver'=>'local',
+            'root'=>public_path('uploads/exhibit'),
+            'url'=>env('APP_URL').'/public/uploads/exhibit',
             'visibility'=>'public'
         ],
          'suspects'=>[
@@ -83,8 +89,8 @@ return [
         public_path('storage') => storage_path('app/public'),
         public_path('victims') => public_path('uploads/victims'),
         public_path('suspects') => public_path('uploads/suspects'),
+        public_path('exhibit') => public_path('uploads/exhibit'),
         public_path('backup') => storage_path('app/backup')
-
     ],
 
 ];
