@@ -17,7 +17,7 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->string('firstname',50);
             $table->string('lastname',50);
-            $table->string('status',15)->enum('UNVERIFIED', 'VERIFIED')->default('UNVERIFIED');
+            $table->string('verification_status',15)->enum('UNVERIFIED', 'VERIFIED')->default('UNVERIFIED');
             $table->string('email',50)->unique();
             $table->integer('organisation');
             $table->integer('role');

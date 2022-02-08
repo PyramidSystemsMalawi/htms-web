@@ -42,6 +42,8 @@ class ExhibitController extends Controller
 
             $exhibit->save();
 
+            return array('status'=>'success','message'=>'Exhibit record created!','data'=>$exhibit);	
+
         }catch(Exception $err){
             return response()->json(['error' => $err->getMessage()], 500);
         }

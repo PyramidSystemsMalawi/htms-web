@@ -17,13 +17,18 @@ class Cases extends Model
         parent::boot();
 
         self::creating(function ($case) {
-            $reference = self::generateReference();
-            $case->reference = $reference;
+            //Check if case reference isset and
+            //if not generate a reference
+            if (!isset($case->reference) || empty($case->reference)) {
+                $reference = self::generateReference();
+                $case->reference = $reference;
+            }
+
         });
     }
 
     private static function generateReference(){
-        $_proposed = "HTC".rand(10001, 99999);
+        $_proposed = "TIP".rand(10001, 99999);
 
         if(count(Cases::where('reference','=',$_proposed)->get()) > 0){
             return self::generateReference();

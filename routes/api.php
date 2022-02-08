@@ -20,6 +20,8 @@ Route::prefix('v1')->group(function(){
     Route::get('users', 'UsersController@all');
     Route::get('users/{user_id}', 'UsersController@find');
 
+    Route::resource('exhibit', 'ExhibitController');
+
 });
 
 Route::prefix('v1')->group(function(){

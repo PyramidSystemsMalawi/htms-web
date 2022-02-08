@@ -5,8 +5,8 @@
 <div class="container-fluid main-wrapper ">
         <div class="row">
             <header class="col-8 mx-auto text-center text-secondary">
-                <h3 class=" mt-5 mb-0" id="login_title">HTMS<br> <span style="font-family: 'Yu Gothic UI'; font-size:35px;"></span> </h3>
-
+                <h3 class=" mt-5 mb-0 login_title">Trafficking In-Persons Management Information System<br> <span style="font-family: 'Yu Gothic UI'; font-size:35px;"></span> </h3>
+                <h1 class="text-center login_title">(TIMIS)</h1>
                 <div class="image ui m-0">
                     <img src="img/logo-main.png" alt="Application Logo">
                 </div>
@@ -77,7 +77,12 @@
         </div>
    </div>
 
-
+<style>
+    .login_title{
+        font-family: roboto !important;
+        text-transform: uppercase !important;
+    }
+</style>
     <script>
         const BaseURL = "http:"
         $(()=>{

@@ -73,15 +73,31 @@ class CasesController extends Controller
         //Create case
         try {
             $case = new Cases();
-            $case->case_name = $request->case_title;
             $case->district = $request->district;
             $case->traditional_authority = $request->trad_auth;
             $case->village = $request->village;
             $case->brief = $request->brief;
 
+            if(isset($request->reference) && !empty($request->reference)){
+                $case->reference = $request->reference;
+            }
+
+
+            if(isset($request->entry_date) && !empty($request->entry_date)){
+                $case->created_at = $request->entry_date;
+            }
+
+            if(isset($request->case_title) && !empty($request->case_title)){
+                $case->case_name = $request->case_title;
+            }else{
+                $case->case_name = 'TIP CASE - '.$case->reference;
+                //Check if district isset and append to case name
+                if(isset($request->district) && !empty($request->district)){
+                    $case->case_name .= ' - '.$request->district;
+                }
+            }
+
             $case->save();
-
-
 
            $multiPurposeObject = array(
                 'officer'=>$request->officer,
