@@ -1,6 +1,4 @@
-@extends('layouts.main')
-
-@section('content')
+<?php $__env->startSection('content'); ?>
 <div class="row">
     <div class="col-12">
         <p class="text-danger text-center">The Laws of Malawi Consists Of Pre-defined questions that are use to determin the validity of any case to the extent of how much it qualifies as a TIP case. This section allows you to set these questions and their expected responses so that they can appear in the data collection Tool (Android App TIP v1.2) and used to interview TIP Case Victims. </p>
@@ -23,24 +21,24 @@
                 <th></th>
             </thead>
             <tbody>
-                @if(count($qualifiers) > 0)
-                    @foreach($qualifiers as $qualifier)
+                <?php if(count($qualifiers) > 0): ?>
+                    <?php $__currentLoopData = $qualifiers; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $qualifier): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <tr>
-                            <td>{{$qualifier->id}}</td>
-                            <td>{{$qualifier->question}}</td>
-                            <td>{{$qualifier->responseType}}</td>
-                            <td>{{$qualifier->possible_answers}}</td>
-                            <td>@if($qualifier->nullable) TRUE @else FALSE @endif</td>
+                            <td><?php echo e($qualifier->id); ?></td>
+                            <td><?php echo e($qualifier->question); ?></td>
+                            <td><?php echo e($qualifier->responseType); ?></td>
+                            <td><?php echo e($qualifier->possible_answers); ?></td>
+                            <td><?php if($qualifier->nullable): ?> TRUE <?php else: ?> FALSE <?php endif; ?></td>
                             <th>
                                 <a   class="btn btn-xs btn-primary">
                                     <i class="fa fa-edit"></i>
-                                </a> | <a onclick="ConfirmDelete({{$qualifier->id}})" href="#" class="btn btn-xs btn-danger">
+                                </a> | <a onclick="ConfirmDelete(<?php echo e($qualifier->id); ?>)" href="#" class="btn btn-xs btn-danger">
                                     <i class="fa fa-trash"></i>
                                 </a>
                             </th>
                         </tr>
-                    @endforeach
-                @endif
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                <?php endif; ?>
             </tbody>
         </table>
     </div>
@@ -54,7 +52,7 @@
                 <div class="modal fade" id="add">
                         <div class="modal-dialog modal-md">
                             <form action="/qualifiers" method="POST" >
-                            @csrf
+                            <?php echo csrf_field(); ?>
                           <div class="modal-content">
                             <div class="modal-header">
                               <h4 class="modal-title">Add Qualifier</h4>
@@ -142,4 +140,6 @@
 </script>
 
 
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.main', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\ASUS\Desktop\projects\Other\Pyramid Systems\web\resources\views/pages/qualifiers/list.blade.php ENDPATH**/ ?>
