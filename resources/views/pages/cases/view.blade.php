@@ -63,8 +63,8 @@
         <button type="button" data-toggle="modal" data-target="#InterTransferModal" onclick="setActiveCase('{{$casedetails->reference}}')" class="btn btn-block btn-primary flat">
             Transfer To Another Organisation
         </button>
-         <button type="button" onclick="setActiveCase('{{$casedetails->reference}}')" class="btn btn-block btn-primary flat">
-            Transfer Internally
+         <button type="button" data-toggle ="modal" data-target="#exhibitModal" class="btn btn-block btn-warning flat">
+            View Exhibit Gallery
         </button>
         <hr>
          <button type="button" onclick="DeleteCase('{{$casedetails->reference}}')" class="btn btn-block btn-danger flat">
@@ -81,6 +81,40 @@
         </table>
     </div>
 </div>
+
+{{-- EXHIBIT MODAL --}}
+
+<!-- Modal -->
+<div class="modal fade" id="exhibitModal" tabindex="-1" role="dialog" aria-labelledby="exhibitModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">TIP Exhibit Gallery : Case Ref ({{$casedetails->reference}})</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                @if(count($exhibits) > 0)
+                    @foreach($exhibits as $exhibit)
+                        <div class="col-4">
+                            <img class="border border-secondary image_canvas img img-thumbnail"
+                              style="width:100%;height:27vh;" src="{{config('app.url')}}/uploads/exhibit/{{$exhibit->url}}">
+
+                        </div>
+                    @endforeach
+                @endif
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {{-- END EXHIBIT MODAL --}}
 
 <div class="modal" id="InterTransferModal" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">

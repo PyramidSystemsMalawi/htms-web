@@ -12,6 +12,7 @@ use App\Models\CaseOfficer;
 use Illuminate\Http\Request;
 use App\Http\Controllers\NotesController;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Exhibit;
 
 
 
@@ -149,6 +150,8 @@ class CasesController extends Controller
         $casedetails[0]['suspects'] = count(Suspect::where('case_reference', '=', $request->case_reference)->get());
         $casedetails[0]['officers'] = count(CaseOfficer::where('case', '=', $request->case_reference)->get());
 
+        //fetch exhibit by case_reference and add to return
+        $exhibits = Exhibit::where('case_reference', '=', $request->case_reference)->get();
 
         $organisations = Organisation::where('id' , '!=', $casedetails[0]->organisation)->get();
 
@@ -159,7 +162,8 @@ class CasesController extends Controller
             'userdata'=>$userdata,
             'casedetails'=>$casedetails[0],
             'organisations'=>$organisations,
-            'availOfficers'=>$availableOfficers
+            'availOfficers'=>$availableOfficers,
+            'exhibits'=>$exhibits
         ));
     }
 

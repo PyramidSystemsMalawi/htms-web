@@ -9,11 +9,7 @@ use App\Http\Controllers\FileController;
 
 class ExhibitController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index(Request $request)
     {
         $exhibits = Exhibit::where('case_reference','=', $request->case_reference)->get();
@@ -42,7 +38,7 @@ class ExhibitController extends Controller
 
             $exhibit->save();
 
-            return array('status'=>'success','message'=>'Exhibit record created!','data'=>$exhibit);	
+            return array('status'=>'success','message'=>'Exhibit record created!','data'=>$exhibit);
 
         }catch(Exception $err){
             return response()->json(['error' => $err->getMessage()], 500);
