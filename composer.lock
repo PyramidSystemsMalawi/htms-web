@@ -646,7 +646,6 @@
                 }
             ],
             "time": "2022-02-23T14:25:13+00:00"
-<<<<<<< HEAD
         },
         {
             "name": "fruitcake/php-cors",
@@ -718,8 +717,6 @@
                 }
             ],
             "time": "2022-02-20T15:07:15+00:00"
-=======
->>>>>>> 2aeaedbf8c7ec9789fcd33ad1edfced13d39a8cd
         },
         {
             "name": "graham-campbell/result-type",
