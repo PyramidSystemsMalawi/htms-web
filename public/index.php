@@ -5,6 +5,29 @@ use Illuminate\Http\Request;
 
 define('LARAVEL_START', microtime(true));
 
+
+$allowedOrigins = [
+    'http://127.0.0.1:8080',
+    'http://localhost:8080',
+     $_SERVER['HTTP_ORIGIN']
+];
+//echo "Origin: ".$_SERVER['HTTP_ORIGIN'];
+
+if(isset($_SERVER['HTTP_ORIGIN']) && $_SERVER['HTTP_ORIGIN'] != '') {
+    foreach($allowedOrigins AS $allowedOrigin){
+        if(preg_match('#'. $allowedOrigin .'#', $_SERVER['HTTP_ORIGIN'])){
+            header('Access-Control-Allow-Origin: ' . $_SERVER['HTTP_ORIGIN']);
+            header('Access-Control-Allow-Credentials: true');
+            header('Access-Control-Allowed-Methods: GET, POST, PUT, PATCH, DELETE, OPTIONS');
+            header('Access-Control-Max-Age: 12800000');
+            header('Access-Control-Allow-Headers: Origin, Content-Type, Accept, Authorization, X-Requested-With, X-CSRF-Token');
+            break;
+        }
+
+        }
+}
+
+
 /*
 |--------------------------------------------------------------------------
 | Check If The Application Is Under Maintenance

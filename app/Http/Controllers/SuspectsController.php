@@ -13,7 +13,7 @@ class SuspectsController extends Controller
     public function index(Request $request)
     {
          try{
-            $suspects;
+            $suspects = null;
             if(isset($request->case_reference) && !empty($request->case_reference)){
                 $suspects = Suspect::where('case_reference','=',$request->case_reference)->get();
             }else{
