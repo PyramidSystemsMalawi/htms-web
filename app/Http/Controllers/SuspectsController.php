@@ -9,8 +9,8 @@ use App\Http\Controllers\FileController;
 
 class SuspectsController extends Controller
 {
-  
-    public function index()
+
+    public function index(Request $request)
     {
          try{
             $suspects;
@@ -27,10 +27,10 @@ class SuspectsController extends Controller
 
     public function create()
     {
-    
+
     }
 
-   
+
     public function store(Request $request)
     {
         //Add Suspect To Case
@@ -55,7 +55,7 @@ class SuspectsController extends Controller
             $suspect->save();
 
             return array(
-                'status'=>'success', 
+                'status'=>'success',
                 'message'=>'Suspect file successfully added to Case!'
             );
 
