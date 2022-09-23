@@ -40,4 +40,5 @@ class Cases extends Model
         'updated_at'=>'date:Y-m-d'
     ];
 
+
 }
