@@ -15,7 +15,7 @@ class TIPChecklistSeeder extends Seeder
     public function run()
     {
         //Read all tip questions from json file in public folder
-        $json = json_decode(file_get_contents(public_path('qualifiers.json')),true);
+        $json = json_decode(file_get_contents(public_path('qualifiers.json')));
 
         foreach($json AS $q){
             DB::table('qualifiers')->insert([
