@@ -20,7 +20,7 @@ class SettingsController extends Controller
         $districts = District::all();
         $userdata = Auth::user();
         return view('pages.settings.districts')->with([
-            'title' => 'Users',
+            'title' => 'Districts',
             'userdata' => $userdata,
             'districts' => $districts
         ]);
