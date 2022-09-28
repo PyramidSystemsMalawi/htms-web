@@ -40,6 +40,7 @@ class OrganisationsController extends Controller
             $organisation->description = $request->description;
             $organisation->email = $request->email;
             $organisation->phone = $request->phone;
+            $organisation->contact_person = $request->contact_person;
 
             $organisation->save();
         }catch(\Exception $err){

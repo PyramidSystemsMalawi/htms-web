@@ -63,8 +63,12 @@
                                           <input type="text" name="physical_address" placeholder="e.g Address Line 1, Street Number, Town, City"
                                           class="form-control" required>
                                       </div>
+                                      <div class="col-12 form-group">
+                                        <label for="">Name Of Contact Person</label>
+                                        <input type="text" name='contact_person' placehjolder="é.g John Smith" class="form-control" required/>
+                                      </div>
                                       <div class="col-6 form-group">
-                                          <label for="">Email Address</label>
+                                          <label for="">Email Of Contact Person</label>
                                           <input type="email" name="email" placeholder="e.g manager@mps.mw" class="form-control" required>
                                       </div>
                                       <div class="col-6 form-group">
