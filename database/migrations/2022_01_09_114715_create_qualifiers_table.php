@@ -15,7 +15,7 @@ class CreateQualifiersTable extends Migration
     {
         Schema::create('qualifiers', function (Blueprint $table) {
             $table->id();
-            $table->string('question',255)->nullable();
+            $table->text('question',1000)->nullable();
             $table->enum('responseType',['boolean', 'multiple', 'text', 'number','bool-plus-input']);
             $table->boolean('nullable')->default(true);
             $table->text('possible_answers',1000)->nullable();
