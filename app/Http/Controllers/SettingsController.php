@@ -60,7 +60,7 @@ class SettingsController extends Controller
                 ->with('success', $request->district_name . ' (' . $request->district_code . ') district added successfuly!');
         } catch (\Exception $err) {
             return redirect()->route('districts')
-                ->with('error', 'Failed to save the provided district details!');
+                ->with('error', 'Error: '.$err->getMessage());
         }
     }
 
