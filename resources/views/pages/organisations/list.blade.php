@@ -65,7 +65,7 @@
                                       </div>
                                       <div class="col-12 form-group">
                                         <label for="">Name Of Contact Person</label>
-                                        <input type="text" name='contact_person' placehjolder="é.g John Smith" class="form-control" required/>
+                                        <input type="text" name='contact_person' placeholder="é.g John Smith" class="form-control" required/>
                                       </div>
                                       <div class="col-6 form-group">
                                           <label for="">Email Of Contact Person</label>
