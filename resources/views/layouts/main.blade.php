@@ -173,6 +173,14 @@
             </a>
           </li>
           <li class="nav-item">
+            <a href="/settings/districts" class="nav-link @if($title == 'Reports') active @endif">
+              <i class="nav-icon fas fa-folder-open"></i>
+              <p>
+                Districts
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
             <a href="/reports" class="nav-link @if($title == 'Reports') active @endif">
               <i class="nav-icon fas fa-folder-open"></i>
               <p>
@@ -180,6 +188,7 @@
               </p>
             </a>
           </li>
+
 
         </ul>
       </nav>
