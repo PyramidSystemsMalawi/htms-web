@@ -1,12 +1,13 @@
 @extends('layouts.secondary')
 
 @section('content')
+
 <link rel="stylesheet" href="css/login.css">
-<div class="container-fluid main-wrapper ">
-        <div class="row">
-            <header class="col-8 mx-auto text-center text-secondary">
-                <h3 class=" mt-5 mb-0 login_title">Trafficking In-Persons Management Information System<br> <span style="font-family: 'Yu Gothic UI'; font-size:35px;"></span> </h3>
-                <h1 class="text-center login_title">(TIMIS)</h1>
+<div class="container-fluid main-wrapper">
+        <div class="row" >
+            <header class="col-7 mx-auto text-center text-white">
+                <h3 class=" mt-5 mb-0 login_title">TRAFFICKING IN-PERSONS MANAGEMENT INFORMATION</h3>
+                <h1 class="text-center login_title mt-0">SYSTEM</h1>
                 <div class="image ui m-0">
                     <img src="img/logo-main.png" alt="Application Logo">
                 </div>
@@ -44,28 +45,42 @@
                         <div class="login login_pad" augmented-ui="tl-clip-y br-clip exe">
                             <form class="ui form" d="loginForm" method="POST" action="users/login" autocomplete="off">
                             @csrf
-                                <div class="field fluid">
+                                <div class="ui icon medium input field fluid">
                                     <input type="email" autocomplete="off" name="email" id="username" placeholder="Username">
+                                    <i class="user circle icon"></i>
                                 </div>
-                                <div class="field fluid">
+                                <div class="ui medium icon input field fluid">
                                     <input type="password" autocomplete="off" name="password" id="password" placeholder="Password">
+                                    <i class="lock icon"></i>
                                 </div>
                                 <div class="field fluid">
                                     <button type="submit"  id="loginBtn"
-                                    class="btn btn-md float-right btn-secondary ui button">Authenticate <i class="icon lock"></i></button>
+                                    class="btn btn-md float-right negative ui button">Authenticate <i class="sign-in icon"></i></button>
                                 </div>
                                 <div class="field">
-                                    <div style="color:#018cd6;" class="ui horizontal divider">OR</div>
+                                    <!-- <div style="color:#018cd6;" class="ui horizontal divider">OR</div> -->
                                 </div>
                                 <div class="fluid field">
 
-                                    <label><a style="font-family: monaco;" href="">Forgot Password?</a></label>
+                                    <!-- <label><a style="font-family: monaco;" href="">Forgot Password?</a></label> -->
                                 </div>
                             </form>
                         </div>
                         <div class="m-3 p-2 ">
-                            <div class="ui horizontal divider text-danger"
+                            <div style="color:red !important;" class="ui horizontal divider"
                             style="font-family: orbitron !important;">NO UNAUTHORIZED USE</div>
+                            <div class="row text-center">
+                                <div class="col-4 offset-2">
+                                    <div class="ui image tiny">
+                                        <img src="img/mg-logo.png" alt="" class="ui img">
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="ui image tiny">
+                                        <img src="img/usaid-logo.png" alt="" class="ui img">
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

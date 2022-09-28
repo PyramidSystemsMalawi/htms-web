@@ -14,16 +14,7 @@ class UserFactory extends Factory
      */
     public function definition()
     {
-        return [
-            
-            'firstname' => 'Clifford',
-            'lastname' => 'Mwale',
-            'email' => $this->faker->unique()->safeEmail(),
-            'email_verified_at' => now(),
-            'password' => '11223', // password
-            'role'=>'3'
-            'remember_token' => Str::random(10),
-        ];
+       
     }
 
     /**

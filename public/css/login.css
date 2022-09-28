@@ -1,0 +1,14 @@
+.main-wrapper{
+    background-image: url('../img/banner-top.png');
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+.field input{
+    font-size: 18px;
+    font-weight:bold;
+    color: rgb(22, 22, 22);
+    font-family: Roboto !important;
+    padding-left: 40px !important;
+}

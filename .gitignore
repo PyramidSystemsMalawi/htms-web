@@ -13,3 +13,8 @@ npm-debug.log
 yarn-error.log
 /.idea
 /.vscode
+/public/exhibit/
+/public/victims/
+/public/uploads/exhibit/
+/public/uploads/suspects/
+/public/uploads/victims/

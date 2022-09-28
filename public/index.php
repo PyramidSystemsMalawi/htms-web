@@ -9,6 +9,10 @@ define('LARAVEL_START', microtime(true));
 $allowedOrigins = [
     'http://127.0.0.1:8080',
     'http://localhost:8080',
+<<<<<<< HEAD
+=======
+    // $_SERVER['HTTP_ORIGIN']
+>>>>>>> 7adb5887159ca20ad6d9fde28f41b0a33979c384
 ];
 //echo "Origin: ".$_SERVER['HTTP_ORIGIN'];
 
