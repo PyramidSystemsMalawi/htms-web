@@ -27,10 +27,15 @@
                 <th>#</th>
                 <th>District Name</th>
                 <th>Code</th>
-                <th></th>
             </thead>
             <tbody>
-
+                @foreach($districts AS $district)
+                    <tr>
+                        <td>{{$district->id}}</td>
+                        <td>{{$district->district_name}}</td>
+                        <td>{{$district->district_code}}</td>
+                    </tr>
+                @endforeach
             </tbody>
         </table>
     </div>
