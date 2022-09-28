@@ -7,11 +7,11 @@
         <div class="h3 p-2 text-white bg-secondary">New Entry</div>
         <hr>
         <form action="/districts" class="form-row">
-            <div class="col-9 form-group">
+            <div class="col-8 form-group">
                 <label for="">District Code :</label>
                 <input type="text" onkeyup="this.value = this.value.toUpperCase()" name="district_name" placeholder="e.g LILONGWE" class="form-control" required/>
             </div>
-            <div class="col-3 form-group">
+            <div class="col-4 form-group">
                 <label for="">Code :</label>
                 <input type="text" name="district_code" placeholder="e.g LL"
                 class="form-control" required/>
