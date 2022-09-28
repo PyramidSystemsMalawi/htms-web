@@ -30,9 +30,9 @@
                 <th>Code</th>
             </thead>
             <tbody>
-                @foreach($districts AS $district)
+                @foreach($districts AS $k3y => $district)
                     <tr>
-                        <td>{{$district->id}}</td>
+                        <td>{{$district->($key+1)}}</td>
                         <td>{{$district->district_name}}</td>
                         <td>{{$district->district_code}}</td>
                     </tr>

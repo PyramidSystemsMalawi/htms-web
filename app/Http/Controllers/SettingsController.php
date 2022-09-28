@@ -17,7 +17,7 @@ class SettingsController extends Controller
      */
     public function index()
     {
-        $districts = District::all();
+        $districts = District::orderBy('district_name','DESC')->all();
         $userdata = Auth::user();
         return view('pages.settings.districts')->with([
             'title' => 'Districts',
