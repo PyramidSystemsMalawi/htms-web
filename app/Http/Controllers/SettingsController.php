@@ -52,7 +52,7 @@ class SettingsController extends Controller
             }
             $district = new District();
             $district->district_name = $request->district_name;
-            $district->code = $request->district_code;
+            $district->district_code = $request->district_code;
 
             $district->save();
 
