@@ -40,3 +40,5 @@ Route::get('/qualifiers/delete', 'QualifiersController@destroy')->middleware('au
 
 Route::get('/victims-list', 'VictimsController@list')->name('victims')->middleware('auth');
 Route::get('viewVictim','VictimsController@view')->middleware('auth');
+Route::get('/settings/districts', 'SettingsController@index')->name('districts')->middleware('auth');
+Route::post('/settings/districts', 'SettingsController@store')->middleware('auth');
