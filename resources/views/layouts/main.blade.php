@@ -174,7 +174,7 @@
           </li>
           <li class="nav-item">
             <a href="/districts" class="nav-link @if($title == 'Districts') active @endif">
-              <i class="nav-icon fas fa-folder-open"></i>
+              <i class="nav-icon fas fa-map"></i>
               <p>
                 Districts
               </p>
