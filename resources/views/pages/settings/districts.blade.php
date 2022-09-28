@@ -32,7 +32,7 @@
             <tbody>
                 @foreach($districts AS $k3y => $district)
                     <tr>
-                        <td>{{$loop->iteration+1}}</td>
+                        <td>{{$loop->iteration}}</td>
                         <td>{{$district->district_name}}</td>
                         <td>{{$district->district_code}}</td>
                     </tr>
