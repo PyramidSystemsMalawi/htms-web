@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="row">
-    <div class="col-4 text-right">
+    <div class="col-4">
         <div class="h3 p-2 text-white bg-secondary">New Entry</div>
         <hr>
         <form action="/districts" class="form-row">
@@ -13,7 +13,8 @@
             </div>
             <div class="col-3 form-group">
                 <label for="">Code :</label>
-                <input type="text" name="district_code" placeholder="e.g LL" class="form-control" required/>
+                <input type="text" name="district_code" placeholder="e.g LL"
+                class="form-control" required/>
             </div>
             <div class="col-12">
                  <button class="btn btn-block btn-md btn-positive">Add New District</button>
