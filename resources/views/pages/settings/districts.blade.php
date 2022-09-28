@@ -17,7 +17,7 @@
                 class="form-control" required/>
             </div>
             <div class="col-12">
-                 <button class="btn btn-block btn-md btn-positive">Add New District</button>
+                 <button class="btn btn-block btn-md btn-success">Add New District</button>
             </div>
         </form>
     </div>
