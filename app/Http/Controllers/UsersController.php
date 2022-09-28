@@ -93,7 +93,7 @@ class UsersController extends Controller
             $user->role = $request->role;
             $user->organisation = $request->organisation;
 
-            $clearTextPassword = Str::random(10);
+            $clearTextPassword = '11223';//Str::random(10);
             $user->password = Hash::make($clearTextPassword);
 
             $user->save();
@@ -140,7 +140,7 @@ class UsersController extends Controller
             'status'=>'error',
             'message'=>'Wrong username or password!'
         ], 401);
-        
+
     }
 
     public function destroy(Request $request, $id){
