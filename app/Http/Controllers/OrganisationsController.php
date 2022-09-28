@@ -42,7 +42,7 @@ class OrganisationsController extends Controller
             $organisation->phone = $request->phone;
 
             $organisation->save();
-        }catch(Exception $err){
+        }catch(\Exception $err){
 
         }finally{
             return redirect()->route('organisations-list');

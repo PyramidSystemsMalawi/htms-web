@@ -47,7 +47,7 @@ class SettingsController extends Controller
         try {
             $check_district = District::where('district_name', '=', $request->district_name)->get();
             if ($check_district != null && count($check_district) > 0) {
-                redirect()->route('districts')
+                return redirect()->route('districts')
                     ->with('error', 'The provided district name already exist!');
             }
             $district = new District();
@@ -56,10 +56,10 @@ class SettingsController extends Controller
 
             $district->save();
 
-            redirect()->route('districts')
+            return redirect()->route('districts')
                 ->with('success', $request->district_name . ' (' . $request->district_code . ') district added successfuly!');
         } catch (\Exception $err) {
-            redirect()->route('districts')
+            return redirect()->route('districts')
                 ->with('error', 'Failed to save the provided district details!');
         }
     }
