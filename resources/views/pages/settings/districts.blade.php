@@ -3,11 +3,24 @@
 @section('content')
 
 <div class="row">
-    <div class="col-12 text-right">
-        <button class="ui button icon positive">Add New District</button>
-
+    <div class="col-4 text-right">
+        <div class="h3 p-2 text-white bg-secondary">New Entry</div>
+        <hr>
+        <form action="/districts" class="form-row">
+            <div class="col-9 form-group">
+                <label for="">District Code :</label>
+                <input type="text" onkeyup="this.value = this.value.toUpperCase()" name="district_name" placeholder="e.g LILONGWE" class="form-control" required/>
+            </div>
+            <div class="col-3 form-group">
+                <label for="">Code :</label>
+                <input type="text" name="district_code" placeholder="e.g LL" class="form-control" required/>
+            </div>
+            <div class="col-12">
+                 <button class="btn btn-block btn-md btn-positive">Add New District</button>
+            </div>
+        </form>
     </div>
-    <div class="col-12">
+    <div class="col-8">
         <table class="table table-sm table-striped table-bordered">
             <thead>
                 <th>#</th>
