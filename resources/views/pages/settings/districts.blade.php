@@ -14,7 +14,7 @@
             </div>
             <div class="col-4 form-group">
                 <label for="">Code :</label>
-                <input type="text" name="district_code" placeholder="e.g LL"
+                <input type="text" name="district_code" onkeyup="this.value = this.value.toUpperCase()" placeholder="e.g LL"
                 class="form-control" required/>
             </div>
             <div class="col-12">
