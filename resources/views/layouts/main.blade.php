@@ -52,10 +52,7 @@
     margin: 2px auto;
     z-index: 1100 !important;
 }
-.modal-backdrop {
-    /* bug fix - no overlay */
-    display: none;
-}
+
 </style>
 @if($title == 'Reports')
 <style>
