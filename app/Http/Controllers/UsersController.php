@@ -84,6 +84,10 @@ class UsersController extends Controller
         try{
 
             $user = User::find($request->user_id);
+            return response()->json([
+                'user'=>$user,
+                'currentPassword'=>Hash::make($request->currentPassword);
+            ]);
             if($user->password == Hash::make($request->currentPassword)){
                 $user->password = Hash::make($request->newPassword);
                 $user->save();
