@@ -45,7 +45,6 @@
     *{
         font-family: 'roboto' ;
     }
-    .modal-backdrop {display: none;}
 </style>
 @if($title == 'Reports')
 <style>
@@ -235,7 +234,7 @@
         <!-- Main row -->
         <div class="row">
             <div class="col-12">
-             
+
 
             </div>
         </div>
