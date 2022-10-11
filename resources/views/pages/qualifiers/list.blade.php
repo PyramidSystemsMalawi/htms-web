@@ -121,8 +121,8 @@
                                     <input type="text" name="qid" value="{{$qualifier->id}}" class="form-control" hidden>
                                     <div class="col-12 form-group">
                                         <label for="">Question :</label>
-                                        <textarea type="text" name="question" placeholder="Type your question here..." value="{{$qualifier->question}}" name="name"
-                                        class="form-control" rows="3" required>{{$}}</textarea>
+                                        <textarea type="text" name="question" placeholder="Type your question here..." name="name"
+                                        class="form-control" rows="3" required>{{$qualifier->question}}</textarea>
                                     </div>
                                     <div class="form-group col-12 ">
                                         <label for="">Response Type :</label>
