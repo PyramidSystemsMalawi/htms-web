@@ -234,7 +234,6 @@
         <!-- Main row -->
         <div class="row">
             <div class="col-12">
-                @if($title == 'TIP Checklist')
                 @foreach($qualifiers as $qualifier)
                 <div class="modal fade" id="add">
 
@@ -349,7 +348,6 @@
                       </div>
         @endforeach
 
-                @endif
             </div>
         </div>
         <!-- /.row (main row) -->
