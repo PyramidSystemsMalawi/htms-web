@@ -86,6 +86,7 @@ class UsersController extends Controller
             $user = User::find($request->user_id);
             return response()->json([
                 'user'=>$user,
+                'storePassword'=>$user->password, //
                 'currentPassword'=>Hash::make($request->currentPassword)
             ]);
             exit();
