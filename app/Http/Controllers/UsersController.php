@@ -86,7 +86,7 @@ class UsersController extends Controller
             $user = User::find($request->user_id);
             return response()->json([
                 'user'=>$user,
-                'currentPassword'=>Hash::make($request->currentPassword);
+                'currentPassword'=>Hash::make($request->currentPassword)
             ]);
             exit();
             if($user->password == Hash::make($request->currentPassword)){
