@@ -52,7 +52,7 @@
 
 <div class="modal" id="updateQuestionModal{{$qualifier->id}}" >
     <div class="modal-dialog modal-md" role="document">
-        <div class="modal-content">
+        <form method="PUT" action="/qualifiers/update" class="modal-content">
             <div class="modal-header bg-secondary">
                 <h5 class="modal-title text-white">Update Question</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -102,10 +102,10 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary">Save Changes</button>
+                <button type="submit" class="btn btn-primary">Save Changes</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             </div>
-        </div>
+        </form>
     </div>
 </div>
 @endforeach

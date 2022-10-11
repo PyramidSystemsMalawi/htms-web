@@ -66,9 +66,28 @@ class QualifiersController extends Controller
         //
     }
 
-    public function update(Request $request, qualifier $qualifier)
+    public function update(Request $request)
     {
-        //
+
+        try {
+            //code...
+            $qualifier = Qualifier::find($request->qid);
+
+            $qualifier->question = $request->question;
+            $qualifier->responseType = $request->responseType;
+            $qualifier->possible_answers =$request->possible_answers;
+
+            if ($request->nullable == 'on') {
+                $qualifier->nullable = true;
+            } else {
+                $qualifier->nullable = false;
+            }
+
+            $qualifier->save();
+            return redirect()->route('qualifiers-list')->with('success', 'TIP Qualifier questionnaire updated!');
+        } catch (Exception $err) {
+            return redirect()->route('qualifiers-list')->with('success', 'Error while adding TIP Qualifier question!');
+        }
     }
 
     public function destroy(Request $request)

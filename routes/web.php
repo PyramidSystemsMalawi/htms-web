@@ -36,6 +36,7 @@ Route::get('/users/{id}/delete', 'UsersController@destroy')->middleware('auth');
 
 Route::get('/qualifiers', 'QualifiersController@index')->name('qualifiers-list')->middleware('auth');
 Route::post('/qualifiers', 'QualifiersController@store')->middleware('auth');
+Route::put('/qualifiers/update', 'QualifiersController@update')->middleware('auth');
 Route::get('/qualifiers/delete', 'QualifiersController@destroy')->middleware('auth');
 
 Route::get('/victims-list', 'VictimsController@list')->name('victims')->middleware('auth');
