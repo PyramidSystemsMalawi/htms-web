@@ -84,13 +84,11 @@ class UsersController extends Controller
         try{
 
             $user = User::find($request->user_id);
-            return response()->json([
-                'user'=>$user,
-                'storePassword'=>$user->password, //
-                'currentPassword'=>Hash::make($request->currentPassword)
-            ]);
-            exit();
-            if($user->password == Hash::make($request->currentPassword)){
+            $authenticate = [
+                'email'=>$user->email,
+                'password'=>$user->currentPassword,
+            ];
+            if(Auth::attempt($authenticate)){
                 $user->password = Hash::make($request->newPassword);
                 $user->save();
 
