@@ -80,8 +80,30 @@ class UsersController extends Controller
     }
 
     //Find single user by ID
-    public function find(Request $request){
+    public function updatePIN(Request $request){
+        try{
 
+            $user = User::find($request->user_id);
+            if($user->password == Hash::make($request->currentPassword)){
+                $user->password = Hash::make($request->newPassword);
+                $user->save();
+
+                return response()->json([
+                    'status'=>'success',
+                    'message'=>'New password saved successfully!'
+                ],200);
+            }else{
+                return response()->json([
+                    'status'=>'error',
+                    'message'=>'Invalid user password. Enter valid current password!'
+                ]);
+            }
+        }catch(\Exception $err){
+            return response()->json([
+                'status'=>'error',
+                'message'=>$err->getMessage()
+            ],500);
+        }
     }
 
     public function create(Request $request){
