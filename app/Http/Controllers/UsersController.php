@@ -99,8 +99,7 @@ class UsersController extends Controller
             }else{
                 return response()->json([
                     'status'=>'error',
-                    'message'=>'Invalid user password. Enter valid current password!',
-                    'attempt'=>Auth::attempt($authenticate)
+                    'message'=>'Invalid user password. Enter valid current password!'
                 ]);
             }
         }catch(\Exception $err){
@@ -166,7 +165,7 @@ class UsersController extends Controller
         return response([
             'status'=>'error',
             'message'=>'Wrong username or password!'
-        ], 401);
+        ], 200);
 
     }
 
