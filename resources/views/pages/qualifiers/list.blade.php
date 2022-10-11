@@ -111,7 +111,7 @@
 </div>
 @foreach($qualifiers as $qualifier)
 
-<div class="modal fade" id="updateQuestionModal{{$qualifier->id}}" >
+<div class="modal fade"  data-keyboard="false" data-backdrop="static" id="updateQuestionModal{{$qualifier->id}}" >
     <div class="modal-dialog modal-md" role="document">
         <div class="modal-content">
             <div class="modal-header bg-secondary">
