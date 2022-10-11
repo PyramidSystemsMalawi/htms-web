@@ -88,6 +88,7 @@ class UsersController extends Controller
                 'user'=>$user,
                 'currentPassword'=>Hash::make($request->currentPassword);
             ]);
+            exit();
             if($user->password == Hash::make($request->currentPassword)){
                 $user->password = Hash::make($request->newPassword);
                 $user->save();
