@@ -83,11 +83,11 @@
                                 Input</option>
                         </select>
                     </div>
-                    <div id="answers_field" class="col-12 form-group d-none">
+                    <div id="answers_field" @if($qualifier->responseType == 'multiple') class="col-12 form-group" @else class="col-12 form-group  d-none" @endif >
                         <label for="">Acceptable Answers ( <small class="text-danger">Separate answers with comma
                             </small> ):</label>
-                        <textarea placeholder="" name="possible_answers" value="{{$qualifier->possible_answers}}"
-                            cols="30" rows="3" class="form-control"></textarea>
+                        <textarea name="possible_answers"
+                            cols="30" rows="3" class="form-control">{{$qualifier->possible_answers}}</textarea>
                     </div>
                     <div class="col-6 form-group">
                         <div class="form-check">
