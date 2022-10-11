@@ -18,7 +18,7 @@ Route::prefix('v1')->group(function(){
     Route::post('users/auth', 'UsersController@authenticate');
     Route::post('users', 'UsersController@store');
     Route::get('users', 'UsersController@all');
-    Route::post('users/update_password', 'UserController@updatePIN');
+    Route::post('users/update_password', 'UsersController@updatePIN');
     Route::get('users/{user_id}', 'UsersController@find');
 
     Route::resource('exhibit', 'ExhibitController');
