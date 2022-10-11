@@ -86,7 +86,7 @@ class UsersController extends Controller
             $user = User::find($request->user_id);
             $authenticate = [
                 'email'=>$user->email,
-                'password'=>$user->currentPassword,
+                'password'=>$request->currentPassword,
             ];
             if(Auth::attempt($authenticate)){
                 $user->password = Hash::make($request->newPassword);
