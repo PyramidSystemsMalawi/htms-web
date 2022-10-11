@@ -32,7 +32,7 @@
                             <td>{{$qualifier->possible_answers}}</td>
                             <td>@if($qualifier->nullable) TRUE @else FALSE @endif</td>
                             <th>
-                                <a data-toggle="modal" data-role="modal" data-target="#updateQuestionModal{{$qualifier->id}}" class="btn btn-xs btn-warning">
+                                <a data-bs-toggle="modal" data-bs-target="#updateQuestionModal{{$qualifier->id}}" class="btn btn-xs btn-warning">
                                     <i class="fa fa-edit"></i>
                             </th>
                         </tr>
@@ -47,7 +47,7 @@
     </div>
 
 </div>
- 
+
 <script>
     let table
     $(()=>{

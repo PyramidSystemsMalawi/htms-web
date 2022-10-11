@@ -45,6 +45,7 @@
     *{
         font-family: 'roboto' ;
     }
+    .modal-backdrop {display: none;}
 </style>
 @if($title == 'Reports')
 <style>
@@ -294,7 +295,7 @@
                       </div>
                       <button hidden data-role="modal" data-target="#updateQuestionModal"></button>
 
-                      <div class="modal" id="updateQuestionModal{{$qualifier->id}}" tabindex="-1" role="dialog">
+                      <div class="modal" id="updateQuestionModal{{$qualifier->id}}" tabindex="5" role="dialog">
                         <div class="modal-dialog" role="document">
                           <div class="modal-content">
                             <div class="modal-header bg-secondary">
