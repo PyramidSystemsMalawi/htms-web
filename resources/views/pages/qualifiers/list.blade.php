@@ -53,6 +53,7 @@
 <div class="modal" id="updateQuestionModal{{$qualifier->id}}" >
     <div class="modal-dialog modal-md" role="document">
         <form method="POST" action="/qualifiers/update" class="modal-content">
+         @csrf
             <div class="modal-header bg-secondary">
                 <h5 class="modal-title text-white">Update Question</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
