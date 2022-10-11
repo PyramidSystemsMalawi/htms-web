@@ -34,7 +34,7 @@
                             <td>{{$qualifier->possible_answers}}</td>
                             <td>@if($qualifier->nullable) TRUE @else FALSE @endif</td>
                             <th>
-                                <a data-toggle="modal" data-role="modal"
+                                <a data-toggle="modal"
                                     data-target="#updateQuestionModal{{$qualifier->id}}" class="btn btn-xs btn-warning">
                                     <i class="fa fa-edit"></i>
                             </th>
@@ -111,8 +111,7 @@
 </div>
 @foreach($qualifiers as $qualifier)
 
-
-<div class="modal fade" id="updateQuestionModal{{$qualifier->id}}" tabindex="-1" role="dialog">
+<div class="modal fade" id="updateQuestionModal{{$qualifier->id}}" >
     <div class="modal-dialog modal-md" role="document">
         <div class="modal-content">
             <div class="modal-header bg-secondary">
