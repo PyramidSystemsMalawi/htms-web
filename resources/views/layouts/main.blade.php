@@ -45,6 +45,13 @@
     *{
         font-family: 'roboto' ;
     }
+    .modal-backdrop {
+    z-index: 1040 !important;
+}
+.modal-content {
+    margin: 2px auto;
+    z-index: 1100 !important;
+}
 </style>
 @if($title == 'Reports')
 <style>
