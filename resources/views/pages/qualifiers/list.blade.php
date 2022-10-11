@@ -128,11 +128,11 @@
                                         <label for="">Response Type :</label>
                                        <select name="responseType" id="responseType"  class="form-control" required>
                                            <option value="">SELECT</option>
-                                           <option @if($qualifier->responseType 'boolean') selected @endif value="boolean">Simple Yes or No</option>
-                                           <option @if($qualifier->responseType 'bool-plus-input') selected @endif value="bool-plus-input">Compound Yes Or No</option>
-                                           <option @if($qualifier->responseType 'multiple') selected @endif value="multiple">Multiple Choice</option>
-                                           <option @if($qualifier->responseType 'text') selected @endif value="text">Text Input</option>
-                                           <option @if($qualifier->responseType 'number') selected @endif value="number">Number Input</option>
+                                           <option @if($qualifier->responseType == 'boolean') selected @endif value="boolean">Simple Yes or No</option>
+                                           <option @if($qualifier->responseType == 'bool-plus-input') selected @endif value="bool-plus-input">Compound Yes Or No</option>
+                                           <option @if($qualifier->responseType == 'multiple') selected @endif value="multiple">Multiple Choice</option>
+                                           <option @if($qualifier->responseType == 'text') selected @endif value="text">Text Input</option>
+                                           <option @if($qualifier->responseType == 'number') selected @endif value="number">Number Input</option>
                                        </select>
                                     </div>
                                     <div id="answers_field" class="col-12 form-group d-none">
