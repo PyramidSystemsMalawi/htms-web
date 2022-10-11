@@ -38,6 +38,9 @@
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/c3/0.7.20/c3.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="js/jquery.jsx"></script>
+<script>
+    const BASE_URL = window.origin
+</script>
 <style>
     *{
         font-family: 'roboto' ;
