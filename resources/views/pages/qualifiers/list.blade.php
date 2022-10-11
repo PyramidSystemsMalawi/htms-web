@@ -143,7 +143,7 @@
                                     <div class="col-6 form-group">
                                         <div class="form-check">
                                       <input class="form-check-input" type="checkbox" name="nullable"
-                                      id="flexCheckChecked" @if($qualifier->nullable 1) checked @endif required>
+                                      id="flexCheckChecked" @if($qualifier->nullable == 1) checked @endif required>
                                       <label class="form-check-label" for="flexCheckChecked">
                                           Nullable ?
                                       </label>
