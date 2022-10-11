@@ -47,69 +47,8 @@
 
         </div>
 
-    </div>
 
-</div>
-<div class="modal fade" id="add">
-
-    <div class="modal-dialog modal-md">
-        <form action="/qualifiers" method="POST">
-            @csrf
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Add Qualifier</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="card card-primary">
-                    <div class="card-body">
-                        <div class="form-row">
-                            <div class="col-12 form-group">
-                                <label for="">Question :</label>
-                                <textarea type="text" name="question" placeholder="Type your question here..."
-                                    name="name" class="form-control" rows="3" required></textarea>
-                            </div>
-                            <div class="form-group col-12 ">
-                                <label for="">Response Type :</label>
-                                <select name="responseType" id="responseType" class="form-control" required>
-                                    <option value="">SELECT</option>
-                                    <option value="boolean">Simple Yes or No</option>
-                                    <option value="bool-plus-input">Compound Yes Or No</option>
-                                    <option value="multiple">Multiple Choice</option>
-                                    <option value="text">Text Input</option>
-                                    <option value="number">Number Input</option>
-                                </select>
-                            </div>
-                            <div id="answers_field" class="col-12 form-group d-none">
-                                <label for="">Acceptable Answers ( <small class="text-danger">Separate answers with
-                                        comma </small> ):</label>
-                                <textarea placeholder="Answer One, Answer Two, ... , Last Answer"
-                                    name="possible_answers" cols="30" rows="3" class="form-control"></textarea>
-                            </div>
-                            <div class="col-6 form-group">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="nullable"
-                                        id="flexCheckChecked" checked required>
-                                    <label class="form-check-label" for="flexCheckChecked">
-                                        Nullable ?
-                                    </label>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="modal-footer justify-content-between">
-                        <button type="reset" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i>
-                            Close</button>
-                        <button type="submit" class="btn btn-primary"><i class="fa fa-check"></i> Submit</button>
-                    </div>
-                </div>
-        </form>
-        <!-- /.modal-content -->
-    </div>
-</div>
-@foreach($qualifiers as $qualifier)
+        @foreach($qualifiers as $qualifier)
 
 <div class="modal" id="updateQuestionModal{{$qualifier->id}}" >
     <div class="modal-dialog modal-md" role="document">
@@ -170,6 +109,71 @@
     </div>
 </div>
 @endforeach
+    </div>
+
+</div>
+
+
+<div class="modal fade" id="add">
+
+    <div class="modal-dialog modal-md">
+        <form action="/qualifiers" method="POST">
+            @csrf
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Add Qualifier</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="card card-primary">
+                    <div class="card-body">
+                        <div class="form-row">
+                            <div class="col-12 form-group">
+                                <label for="">Question :</label>
+                                <textarea type="text" name="question" placeholder="Type your question here..."
+                                    name="name" class="form-control" rows="3" required></textarea>
+                            </div>
+                            <div class="form-group col-12 ">
+                                <label for="">Response Type :</label>
+                                <select name="responseType" id="responseType" class="form-control" required>
+                                    <option value="">SELECT</option>
+                                    <option value="boolean">Simple Yes or No</option>
+                                    <option value="bool-plus-input">Compound Yes Or No</option>
+                                    <option value="multiple">Multiple Choice</option>
+                                    <option value="text">Text Input</option>
+                                    <option value="number">Number Input</option>
+                                </select>
+                            </div>
+                            <div id="answers_field" class="col-12 form-group d-none">
+                                <label for="">Acceptable Answers ( <small class="text-danger">Separate answers with
+                                        comma </small> ):</label>
+                                <textarea placeholder="Answer One, Answer Two, ... , Last Answer"
+                                    name="possible_answers" cols="30" rows="3" class="form-control"></textarea>
+                            </div>
+                            <div class="col-6 form-group">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="nullable"
+                                        id="flexCheckChecked" checked required>
+                                    <label class="form-check-label" for="flexCheckChecked">
+                                        Nullable ?
+                                    </label>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer justify-content-between">
+                        <button type="reset" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i>
+                            Close</button>
+                        <button type="submit" class="btn btn-primary"><i class="fa fa-check"></i> Submit</button>
+                    </div>
+                </div>
+        </form>
+        <!-- /.modal-content -->
+    </div>
+</div>
+
 
 <script>
     let table
