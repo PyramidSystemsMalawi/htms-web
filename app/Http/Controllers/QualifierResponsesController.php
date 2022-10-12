@@ -7,10 +7,10 @@ use Illuminate\Http\Request;
 
 class QualifierResponsesController extends Controller
 {
- 
+
     public function index(Request $request)
     {
-        $qualifications = QualifierResponse::join('victims', 'victims.id', '=','qualifier_responses.victim')->join('users', 'users.email', '=','qualifier_responses.interviewing_officer')->where('qualifier_responses.case_reference','=',$request->case_reference)->get(['qualifier_responses.id','users.firstname AS officer_fname','users.lastname AS officer_lname', 'victims.name AS victim', 'qualifier_responses.created_at AS timestamp']);
+        $qualifications = QualifierResponse::join('victims', 'victims.id', '=','qualifier_responses.victim')->join('users', 'users.email', '=','qualifier_responses.interviewing_officer')->where('qualifier_responses.case_reference','=',$request->case_reference)->get(['victim.id AS victim_id','qualifier_responses.id','users.firstname AS officer_fname','users.lastname AS officer_lname', 'victims.name AS victim', 'qualifier_responses.created_at AS timestamp']);
 
         return array(
             'status'=>'success',
