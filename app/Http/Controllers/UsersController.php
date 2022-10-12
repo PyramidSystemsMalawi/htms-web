@@ -146,8 +146,6 @@ class UsersController extends Controller
             'password' => 'required|string'
         ]);
 
-        //return $request->all();
-
         if(Auth::attempt($request->all())){
 
             $user = Auth::user();
@@ -170,9 +168,7 @@ class UsersController extends Controller
     }
 
     public function destroy(Request $request, $id){
-
         $user = User::find($id)->update(['status'=>'DELETED']);
-
         return redirect()->route('users_list');
     }
 }

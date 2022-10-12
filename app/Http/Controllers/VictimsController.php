@@ -38,6 +38,24 @@ class VictimsController extends Controller
         ));
    }
 
+   public function getInterviewResponses(Request $request){
+        try{
+            $interview = QualifierResponse::where('victim','=',$request->victim_id)->get();
+            $interview = unserialize($interview[0]->responses);
+
+            return response()->json([
+                'status'=>'success',
+                'message'=>'TIP Screening Interview retrieved!',
+                'data'=>$interview
+            ]);
+        }catch(Exception $err){
+            return response()->json([
+                'status'=>'error',
+                'message'=>$err->getMessage()
+            ]);
+        }
+   }
+
     public function view(Request $request)
     {
         $victims = Victim::where('id','=',$request->victim_id)->get();

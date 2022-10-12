@@ -39,7 +39,7 @@ Route::prefix('v1')->group(function(){
     Route::get('qualifiers', 'QualifiersController@list');
     Route::post('qualifiers/responses', 'QualifierResponsesController@store');
     Route::get('qualifiers/responses', 'QualifierResponsesController@index');
-
+    Route::get('qualifier/responses/victim', 'VictimsController@getInterviewResponses');
 
 });
 
