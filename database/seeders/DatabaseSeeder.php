@@ -18,7 +18,8 @@ class DatabaseSeeder extends Seeder
             RolesSeeder::class,
             OrganizationsSeeder::class,
             UserSeeder::class,
-            TIPChecklistSeeder::class
+            TIPChecklistSeeder::class,
+            DistrictTableSeeder::class
         ]);
     }
 }

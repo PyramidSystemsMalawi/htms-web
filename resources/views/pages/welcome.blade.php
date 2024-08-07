@@ -2,90 +2,103 @@
 
 @section('content')
 <div class="row">
-          <div class="col-lg-4 col-6">
-            <!-- small box -->
-            <div class="small-box bg-info">
-              <div class="inner">
-                <h3>{{$stats['cases']}}</h3>
+  <div class="col-lg-4 col-6">
+    <div class="small-box bg-info">
+      <div class="inner">
+        <h3>{{ $stats['cases'] }}</h3>
+        <p>Total Cases</p>
+      </div>
+      <div class="icon">
+        <i class="fa fa-folder-open"></i>
+      </div>
+      <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+    </div>
+  </div>
+  <div class="col-lg-4 col-6">
+    <div class="small-box bg-success">
+      <div class="inner">
+        <h3>{{ $stats['victims'] }}</h3>
+        <p>Total Victims</p>
+      </div>
+      <div class="icon">
+        <i class="fa fa-street-view"></i>
+      </div>
+      <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+    </div>
+  </div>
+  <div class="col-lg-4 col-6">
+    <div class="small-box bg-warning">
+      <div class="inner">
+        <h3>{{ $stats['suspects'] }}</h3>
+        <p>Total Suspects</p>
+      </div>
+      <div class="icon">
+        <i class="fa fa-mask"></i>
+      </div>
+      <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+    </div>
+  </div>
+  <div class="col-12"><hr></div>
+  <div class="col-12">
+    <canvas id="myChart" style="width: 80%; height:200px;"></canvas>
+  </div>
+</div>
 
-                <p>Total Cases</p>
-              </div>
-              <div class="icon">
-                <i class="fa fa-folder-open"></i>
-              </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-          <!-- ./col -->
-          <div class="col-lg-4 col-6">
-            <!-- small box -->
-            <div class="small-box bg-success">
-              <div class="inner">
-                <h3>{{$stats['victims']}}<sup style="font-size: 20px"></sup></h3>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const ctx = document.getElementById('myChart').getContext('2d');
 
-                <p>Total Victims</p>
-              </div>
-              <div class="icon">
-                <i class="fa fa-street-view"></i>
-              </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-          <!-- ./col -->
-          <div class="col-lg-4 col-6">
-            <!-- small box -->
-            <div class="small-box bg-warning">
-              <div class="inner">
-                <h3>{{$stats['suspects']}}</h3>
+  // Data passed from the controller
+  const labels = @json($topDistricts->pluck('district'));
+  const data = @json($topDistricts->pluck('total_cases'));
 
-                <p>Total Suspects</p>
-              </div>
-              <div class="icon">
-                <i class="fa fa-mask"></i>
-              </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-          <div class="col-12"><hr></div>
-          <div class="col-12">
-              <div id="curve_chart" style="width: 100%; height: 500px"></div>
-          </div>
-        </div>
-        <script src="dist/js/pages/dashboard.js"></script>
-         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-            <script type="text/javascript">
-            google.charts.load('current', {'packages':['corechart']});
-            google.charts.setOnLoadCallback(drawChart);
+  const myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: labels,
+      datasets: [{
+        label: 'Total Cases',
+        data: data,
+        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+        borderColor: 'rgba(75, 192, 192, 1)',
+        borderWidth: 1
+      }]
+    },
 
-            function drawChart() {
-                var data = new google.visualization.DataTable()
-                data.addColumn('string', 'Years')
-                data.addColumn('number', 'Cases')
+    layout: {
+      padding: {
+        top: 5,
+        right: 5,
+        bottom: 5,
+        left: 5
+      }
+    },
 
-                data.addRow(
-                    ['2012',  1000],
-                    ['2013',  460],
-                    ['2014',   1120],
-                    ['2015',     540],
-                    ['2016',    6000],
-                    ['2017',   0],
-                    ['2018',    540]
-                    ['2019',      837],
-                    ['2020',  540],
-                    ['2021',  3535],
-                    ['2022',  10]
-                )
-
-                 var options = {
-                    title: 'Human Trafficking Index',
-                    curveType: 'function',
-                    legend: { position: 'bottom' },
-                    height:250
-                };
-
-                var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
-
-                chart.draw(data, options);
-            }
-            </script>
+    options: {
+      responsive: true,
+      scales: {
+        x: {
+          ticks: {
+            autoSkip: false, // Ensure all labels are displayed
+            maxRotation: 45, // Rotate labels to prevent overlap
+            minRotation: 30
+          },
+          title: {
+            display: true,
+            text: 'District Name'
+          }
+        },
+        y: {
+          title: {
+            display: true,
+            text: 'Total Cases'
+          },
+          beginAtZero: true
+        }
+      }
+    }
+  });
+});
+</script>
 @endsection
