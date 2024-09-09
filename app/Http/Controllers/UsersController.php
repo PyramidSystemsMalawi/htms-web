@@ -49,9 +49,6 @@ class UsersController extends Controller
             $user->email = $request->email;
             $user->role = $request->role;
             $user->organisation = $request->organisation;
-
-
-
             $user->save();
 
             return array(
@@ -65,7 +62,6 @@ class UsersController extends Controller
         }catch(Exception $err){
             return array('status'=>'error','message'=>'Failed to create new user account!','error'=>$err);
         }
-
 
     }
 
@@ -130,6 +126,8 @@ class UsersController extends Controller
             return redirect()->route('users_list');
         }
     }
+
+
 
     //Create user login pages
     public function login()
